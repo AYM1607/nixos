@@ -1,0 +1,10 @@
+keys:
+  - &jmug age1psyctjy329r9v07uqu72vkjl06f26f0epvh6zxejdkwp3m0tnyvq88rnr4 # This key is in cold storage.
+  - &hosts:
+    - &nixlap age1cfcfye2unv89fgyuwpvy9sas40jd87kksw7rlgy4cwmcfjqntv2st2jcnp
+creation_rules:
+  - path_regex: secrets.yaml$
+    key_groups:
+    - age:
+      - *jmug
+      - *nixlap
