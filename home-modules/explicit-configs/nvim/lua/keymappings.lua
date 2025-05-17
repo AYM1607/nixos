@@ -78,7 +78,7 @@ vim.api.nvim_set_keymap('n', '<Leader>lgd', '<cmd>lua vim.lsp.buf.definition()<C
 vim.api.nvim_set_keymap('n', '<Leader>lgD', '<cmd>lua vim.lsp.buf.declaration()<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>lgr', '<cmd>lua vim.lsp.buf.references()<CR>', {noremap = true, silent = true})
 vim.api.nvim_set_keymap('n', '<Leader>lgi', '<cmd>lua vim.lsp.buf.implementation()<CR>', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('n', '<Leader>lf', '<cmd>lua vim.lsp.buf.format()<CR>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>lf', '<cmd>lua require("conform").format({ async = true, lsp_fallback = true })<CR>', {noremap = true, silent = true})
 vim.keymap.set('v', '<Leader>lrf', vim.lsp.buf.format)
 vim.api.nvim_set_keymap('n', '<Leader>lr', '<cmd>Lspsaga rename<CR>', {silent = true})
 vim.api.nvim_set_keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', {noremap = true, silent = true})

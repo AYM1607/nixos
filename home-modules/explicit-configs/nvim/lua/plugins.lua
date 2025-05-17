@@ -115,7 +115,16 @@ return require('packer').startup(function(use)
     }
     
     -- Ocaml
-    use "lukas-reineke/lsp-format.nvim"
+    use {
+        "stevearc/conform.nvim",
+        config = function()
+            require("conform").setup({
+                formatters_by_ft = {
+                    ocaml = { "ocamlformat" },
+                },
+            })
+        end,
+    }
 
     -- Comments
     use 'tpope/vim-commentary'
