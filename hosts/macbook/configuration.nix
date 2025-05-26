@@ -5,6 +5,8 @@
     neofetch
   ];
 
+  system.primaryUser = "uagm";
+
   homebrew = {
     enable = true;
     onActivation = {
@@ -31,7 +33,7 @@
   };
 
   fonts.packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "BigBlueTerminal" ]; })
+    nerd-fonts.bigblue-terminal
   ];
 
   users.users.uagm.home = "/Users/uagm";
