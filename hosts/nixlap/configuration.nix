@@ -162,8 +162,8 @@ in
   fonts = {
     fontDir.enable = true;
     packages = with pkgs; [
-      (nerdfonts.override { fonts = [ "BigBlueTerminal" ]; })
-      fira-code-nerdfont
+      nerd-fonts.bigblue-terminal
+      nerd-fonts.fira-code
     ];
   };
   

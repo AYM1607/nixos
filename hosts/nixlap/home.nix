@@ -69,7 +69,6 @@ in
       # Coms
       whatsie
       discord
-      ventoy
       # Embedded
       usbutils
       # Screenshots
