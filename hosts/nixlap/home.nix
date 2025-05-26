@@ -66,8 +66,9 @@ in
       slack
       # Wallpapers
       nitrogen
-      # Whatsapp
+      # Coms
       whatsie
+      discord
       ventoy
       # Embedded
       usbutils
