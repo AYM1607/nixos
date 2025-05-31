@@ -19,7 +19,9 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
+    apple-silicon = {
+      url = "github:tpwrules/nixos-apple-silicon/release-2025-05-17";
+    };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
       url = "github:nix-community/home-manager/release-25.05";
@@ -36,6 +38,7 @@
     nixpkgs-unstable,
     nixpkgs-msft-go,
     nix-darwin,
+    apple-silicon,
     nixos-hardware,
     home-manager,
     ghostty,
@@ -57,6 +60,22 @@
             home-manager.useUserPackages = true;
             home-manager.users.jmug = import ./hosts/nixlap/home.nix;
             home-manager.users.root = import ./hosts/nixlap/home-root.nix;
+          }
+        ];
+      };
+      asahi = nixpkgs.lib.nixosSystem {
+        system = "aarch64-linux";
+        specialArgs = {
+          inherit inputs apple-silicon ghostty;
+        };
+        modules = [
+          ./hosts/asahi/configuration.nix
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jmug = import ./hosts/asahi/home.nix;
           }
         ];
       };
