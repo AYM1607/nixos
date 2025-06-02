@@ -126,8 +126,8 @@ return require('packer').startup(function(use)
         end,
     }
 
-    -- Comments
     use 'tpope/vim-commentary'
+    use 'tpope/vim-surround'
 
     -- Smooth scrolling
     use 'psliwka/vim-smoothie'
