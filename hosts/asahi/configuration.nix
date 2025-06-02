@@ -24,6 +24,8 @@
   boot.loader.efi.canTouchEfiVariables = false;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   networking.hostName = "asahi-nix"; # Define your hostname.
   networking.wireless = {
@@ -45,50 +47,12 @@
   # Set your time zone.
   time.timeZone = "America/Los_Angeles";
 
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
-  # Select internationalisation properties.
-  # i18n.defaultLocale = "en_US.UTF-8";
-  # console = {
-  #   font = "Lat2-Terminus16";
-  #   keyMap = "us";
-  #   useXkbConfig = true; # use xkb.options in tty.
-  # };
-
-  # Enable the X11 windowing system.
-  # services.xserver.enable = true;
-
-  # Configure keymap in X11
-  # services.xserver.xkb.layout = "us";
-  # services.xserver.xkb.options = "eurosign:e,caps:escape";
-
-  # Enable CUPS to print documents.
-  # services.printing.enable = true;
-
-  # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
-
   # This doesn't seem to be doing anything in hyprland because it configure libinput directly.
   # I'll leave it here just in case, but doesn't seem necessary.
   services.libinput = {
     enable = true;
   };
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
-  # users.users.alice = {
-  #   isNormalUser = true;
-  #   extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  #   packages = with pkgs; [
-  #     tree
-  #   ];
-  # };
   users.users.jmug = {
     isNormalUser = true;
     extraGroups = [ "wheel" ];
@@ -135,14 +99,12 @@
     };
   };
 
-  # List packages installed in system profile.
-  # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     keyd
-    kitty
     htop
     # Terminal
     ghostty.packages.aarch64-linux.default
+    kitty
   ];
 
   fonts = {
@@ -156,6 +118,16 @@
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
+  };
+  environment.sessionVariables = {
+    # Enable wayland support for chromium/electron apps.
+    GDK_BACKEND = "wayland";
+    NIXOS_OZONE_WL = "1";
+    MOZ_ENABLE_WAYLAND = "1";
+    # This caused issues with walker, but might be some other
+    # issue with wayland/hyprland, so will leave it here for now.
+    # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
+    # WLR_NO_HARDWARE_CURSORS = "1";
   };
 
   # This is not really enabling X11, bad naming.
