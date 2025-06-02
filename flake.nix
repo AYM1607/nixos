@@ -20,7 +20,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     apple-silicon = {
-      url = "github:tpwrules/nixos-apple-silicon/release-2025-05-17";
+      url = "github:nix-community/nixos-apple-silicon/release-2025-05-30";
     };
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
     home-manager = {
