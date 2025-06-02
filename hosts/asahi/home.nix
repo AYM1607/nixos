@@ -30,6 +30,10 @@ in
     homeDirectory = "/home/jmug";
 
     packages = with pkgs; [
+      # Audio
+      wireplumber
+      # Screen management
+      brightnessctl
       # Secret management.
       age
       sops
@@ -61,6 +65,14 @@ in
       websearch.prefix = "?";
     };
   };
+  services.hyprpaper = {
+    enable = true;
+    settings = {
+      preload = ["/home/jmug/Wallpapers/nyc2.jpg"];
+      wallpaper = [", /home/jmug/Wallpapers/nyc2.jpg"];
+      ipc = true;
+    };
+  };
   programs.waybar = {
     enable = true;
     settings = [
@@ -80,7 +92,7 @@ in
         modules-right = [
             "mpd"
             "idle_inhibitor"
-            "pulseaudio"
+            "wireplumber"
             "network"
             "power-profiles-daemon"
             "cpu"
@@ -229,24 +241,13 @@ in
             format-disconnected = "Disconnected ⚠";
             format-alt = "{ifname}: {ipaddr}/{cidr}";
         };
-        pulseaudio = {
-            # "scroll-step": 1, // %, can be a float
-            format = "{volume}% {icon} {format_source}";
-            format-bluetooth = "{volume}% {icon} {format_source}";
-            format-bluetooth-muted = " {icon} {format_source}";
-            format-muted = " {format_source}";
-            format-source = "{volume}% ";
-            format-source-muted = "";
-            format-icons = {
-                headphone = "";
-                hands-free = "";
-                headset = "";
-                phone = "";
-                portable = "";
-                car = "";
-                default = [" " " " " "];
-            };
-            on-click = "pavucontrol";
+        wireplumber = {
+            format = "{volume}% {icon}";
+            format-muted = "";
+            # on-click = "helvum";
+            max-volume = 150;
+            scroll-step =  0.15;
+            format-icons = [" " " " " "];
         };
         "custom/media" = {
             format = "{icon} {text}";
@@ -337,10 +338,10 @@ in
     ];
 
     general = {
-      gaps_in = 5;
-      gaps_out = 20;
+      gaps_in = 4;
+      gaps_out = 8;
 
-      border_size = 2;
+      border_size = 1;
 
       # https://wiki.hyprland.org/Configuring/Variables/#variable-types for info about colors
       "col.active_border" = "rgba(33ccffee) rgba(00ff99ee) 45deg";
@@ -356,7 +357,7 @@ in
     };
 
     decoration = {
-      rounding = 10;
+      rounding = 5;
       rounding_power = 2;
 
       # Change transparency of focused and unfocused windows
