@@ -12,8 +12,9 @@ let
 in
 {
   imports = [
-    ../../home-modules/nvim.nix
     ../../home-modules/zsh.nix
+    ../../home-modules/nvim.nix
+    ../../home-modules/tmux.nix
     ../../home-modules/git.nix
     ../../home-modules/lazygit.nix
     ../../home-modules/starship.nix
