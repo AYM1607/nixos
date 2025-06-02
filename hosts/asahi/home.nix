@@ -30,7 +30,17 @@ in
       # Secret management.
       age
       sops
+      # Browsers
+      ungoogled-chromium
     ];
+
+    pointerCursor = {
+      gtk.enable = true;
+      x11.enable = true;
+      hyprcursor.enable = true;
+      name = "Posy_Cursor_Black";
+      package = pkgs."posy-cursors";
+    };
 
     file = {} // yubikeyPublicKeyEntries;
 
