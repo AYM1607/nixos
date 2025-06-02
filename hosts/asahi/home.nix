@@ -411,6 +411,8 @@ in
         natural_scroll = true;
         tap-to-click = false;
         disable_while_typing = true;
+        clickfinger_behavior = true; # Right click with 2 fingers.
+        scroll_factor = "0.75";
       };
     };
 
