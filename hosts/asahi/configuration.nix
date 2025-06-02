@@ -102,6 +102,9 @@
   environment.systemPackages = with pkgs; [
     keyd
     htop
+    # Misc utils
+    ripgrep
+    fzf
     # Terminal
     ghostty.packages.aarch64-linux.default
     kitty
