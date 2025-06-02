@@ -13,6 +13,7 @@ in
 {
   imports = [
     ../../home-modules/zsh.nix
+    ../../home-modules/direnv.nix
     ../../home-modules/nvim.nix
     ../../home-modules/tmux.nix
     ../../home-modules/git.nix
