@@ -39,6 +39,8 @@
   };
 
   hardware.asahi = {
+    enable = true;
+    setupAsahiSound = true;
     peripheralFirmwareDirectory = ./firmware;
     useExperimentalGPUDriver = true;
     experimentalGPUInstallMode = "overlay";
