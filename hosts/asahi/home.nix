@@ -1,4 +1,4 @@
-{ lib, config, pkgs, ...} :
+{ lib, config, inputs, pkgs, ...} :
 let
   pathToKeys = ../common/keys/yubi;
   yubiKeys =
@@ -19,6 +19,7 @@ in
     ../../home-modules/starship.nix
     ../../home-modules/ghostty-config.nix
     ../../home-modules/sops.nix
+    inputs.walker.homeManagerModules.default
   ];
 
   home = {
@@ -36,6 +37,17 @@ in
     stateVersion = "25.05"; # Do not change!!!
   };
 
+  programs.walker = {
+    enable = true;
+
+    config = {
+      ui.fullscreen = true;
+      list = {
+        height = 200;
+      };
+      websearch.prefix = "?";
+    };
+  };
   programs.ssh = {
     enable = true;
     addKeysToAgent = "yes";
@@ -228,6 +240,8 @@ in
       # Scroll through existing workspaces with mainMod + scroll
       "$mainMod, mouse_down, workspace, e+1"
       "$mainMod, mouse_up, workspace, e-1"
+      # App launcher
+      "$mainMod, space, exec, GSK_RENDERER=ngl walker"
     ];
 
     bindm = [

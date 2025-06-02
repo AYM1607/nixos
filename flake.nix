@@ -30,6 +30,11 @@
     ghostty = {
       url = "github:ghostty-org/ghostty";
     };
+
+    # Wayland app-launcher
+    walker = {
+      url = "github:abenz1267/walker/v0.12.23";
+    };
   };
 
   outputs = {
