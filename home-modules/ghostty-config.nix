@@ -1,20 +1,29 @@
-{ ... }: {
-  home.file.".config/ghostty/config" = {
+{ lib, config, ... }: {
+  options.ghostty.font-size = lib.mkOption {
+    # Using a string to support floats.
+    type = lib.types.str;
+    default = "12";  # Set your default integer value here
+    description = "Font size to be used within ghostty";
+  };
+
+  options.ghostty.window-decoration = lib.mkEnableOption "window-decoration";
+
+  config.home.file.".config/ghostty/config" = {
     text = ''
     # If not preset, this causes issues when sshing into linux servers.
     term = xterm-256color
     font-family = "BigBlueTermPlus Nerd Font"
-    font-size = 17.2
+    font-size = ${config.ghostty.font-size}
     theme = "PaleNight"
     background-opacity = 0.9
-    window-decoration = false
+    window-decoration = ${if config.ghostty.window-decoration then "true" else "false" }
 
     # This is the default to open the configuration
     # I type this by accident way to frequently...
     keybind = ctrl+comma=unbind
     '';
   };
-  home.file.".config/ghostty/themes/PaleNight" = {
+  config.home.file.".config/ghostty/themes/PaleNight" = {
     text = ''
     palette = 0=#000000
     palette = 1=#ff5555

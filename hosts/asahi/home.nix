@@ -22,6 +22,9 @@ in
     inputs.walker.homeManagerModules.default
   ];
 
+  ghostty.font-size = "14";
+  ghostty.window-decoration = false;
+
   home = {
     username = "jmug";
     homeDirectory = "/home/jmug";
