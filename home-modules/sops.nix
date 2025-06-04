@@ -17,6 +17,9 @@
       "private_keys/matcha" = {
         path = "/home/jmug/.ssh/id_matcha";
       };
+      "private_keys/ace" = {
+        path = "/home/jmug/.ssh/id_ace";
+      };
     };
   };
 }
