@@ -41,6 +41,8 @@ in
       sops
       # Browsers
       ungoogled-chromium
+      # TODO: Remove this when moving to fully yubi module.
+      yubioath-flutter
     ];
 
     pointerCursor = {
