@@ -12,10 +12,13 @@ let
 in
 {
   imports = [
+    # TODO: Move all hyprland related config to its own module.
     ../../home-modules/hyprland.nix
     ../../home-modules/hyprpaper.nix
+    inputs.walker.homeManagerModules.default # TODO: Move to walker.nix?
     ../../home-modules/walker.nix
     ../../home-modules/waybar.nix
+
     ../../home-modules/zsh.nix
     ../../home-modules/direnv.nix
     ../../home-modules/nvim.nix
@@ -25,7 +28,7 @@ in
     ../../home-modules/starship.nix
     ../../home-modules/ghostty-config.nix
     ../../home-modules/sops.nix
-    inputs.walker.homeManagerModules.default
+    ../../home-modules/ssh-client.nix
   ];
 
   ghostty.font-size = "14";

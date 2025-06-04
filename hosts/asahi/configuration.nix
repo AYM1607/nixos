@@ -17,6 +17,7 @@
       apple-silicon.nixosModules.apple-silicon-support
       # Sops and other stuff.
       ../common/core
+      ../common/optional/yubikey.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
