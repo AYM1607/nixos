@@ -62,6 +62,7 @@ in
   options = {
     yubikey = {
       enable = lib.mkEnableOption "Enable yubikey support";
+      enable-u2f-auth = lib.mkEnableOption "Enable u2f backed by a yubikey";
       identifiers = lib.mkOption {
         default = { };
         type = lib.types.attrsOf lib.types.int;
@@ -148,7 +149,7 @@ in
 
     # yubikey login / sudo
     security.pam = lib.optionalAttrs pkgs.stdenv.isLinux {
-      u2f = {
+      u2f = lib.mkIf config.yubikey.enable-u2f-auth {
         enable = true;
         settings = {
           cue = true; # Tells user they need to press the button

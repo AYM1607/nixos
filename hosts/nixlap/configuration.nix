@@ -33,6 +33,8 @@ in
   services.power-profiles-daemon.enable = true;
   # Bonjour
   services.murmur.bonjour = true;
+
+  yubikey.enable-u2f-auth = true;
   
   # Allow using flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
