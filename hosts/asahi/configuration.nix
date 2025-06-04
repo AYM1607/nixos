@@ -110,6 +110,8 @@
     # Terminal
     ghostty.packages.aarch64-linux.default
     kitty
+    # Theming
+    palenight-theme
   ];
 
   fonts = {
