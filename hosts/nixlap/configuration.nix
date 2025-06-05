@@ -29,6 +29,7 @@ in
   # bluetooth.
   hardware.bluetooth.enable = true;
   hardware.bluetooth.powerOnBoot = false;
+  services.blueman.enable = true;
   # power saving on amd laptops.
   services.power-profiles-daemon.enable = true;
   # Bonjour
@@ -293,9 +294,6 @@ in
     sudo -u jmug autorandr --change
     '';
   };
-
-  # Bluetooth.
-  services.blueman.enable = true;
 
   # USB devices
   services.devmon.enable = true;
