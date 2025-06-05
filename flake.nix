@@ -38,8 +38,8 @@
 
     # ssh-agent forwarder for linux.
     ssh-agent-switcher = {
-      url = "github:AYM1607/ssh-agent-switcher/6cd7ce973cf08656d42e475945216d8c0f0b0c7b"
-    }
+      url = "github:AYM1607/ssh-agent-switcher/6cd7ce973cf08656d42e475945216d8c0f0b0c7b";
+    };
   };
 
   outputs = {
@@ -100,6 +100,7 @@
           ./hosts/devbox/configuration.nix
           home-manager.nixosModules.home-manager
           {
+            home-manager.extraSpecialArgs = { inherit inputs ssh-agent-switcher; };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jmug = import ./hosts/devbox/home.nix;

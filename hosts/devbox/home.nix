@@ -1,5 +1,4 @@
-{ inputs, config, pkgs, ... } :
-
+{ inputs, config, pkgs, ssh-agent-switcher, ... } :
 {
 
   imports = [
@@ -28,13 +27,6 @@
       exercism
       # Thin provisioning tools
       thin-provisioning-tools
-      pkgs.writeShellApplication {
-        name = "sas";
-        runtimeInputs = [ inputs.ssh-agent-switcher.aarch64-linux.default ];
-        text = ''
-          ssh-agent-switcher
-        '';
-      }
     ];
 
     stateVersion = "24.11";
@@ -52,6 +44,17 @@
       # TODO: Interpolate the name of the host here.
       nrsw = "sudo nixos-rebuild switch --flake /home/jmug/nixos#devbox";
     };
+    loginExtra = ''
+    if [ ! -e "/tmp/ssh-agent.''${USER}" ]; then
+      if [ -n "''${ZSH_VERSION}" ]; then
+          eval ${ssh-agent-switcher.packages.x86_64-linux.default}/bin/ssh-agent-switcher 2>/dev/null "&!"
+      else
+          ${ssh-agent-switcher.packages.x86_64-linux.default}/bin/ssh-agent-switcher 2>/dev/null &
+          disown 2>/dev/null || true
+      fi
+    fi
+    export SSH_AUTH_SOCK="/tmp/ssh-agent.''${USER}"
+    '';
   };
   
   services.ssh-agent.enable = true;
