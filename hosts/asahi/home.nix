@@ -50,6 +50,7 @@ in
       ungoogled-chromium
       # Coms
       webcord
+      whatsie
     ];
 
     pointerCursor = {
