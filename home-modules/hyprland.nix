@@ -2,6 +2,34 @@
   home.packages = with pkgs; [
     hyprshot
   ];
+  programs.hyprlock = {
+    enable = true;
+    settings = {
+      background = {
+        monitor = "";
+        color = "rgba(25, 20, 20, 1.0)";
+        blur_passes = 2;
+      };
+      input-field = {
+        monitor = "";
+        size = "20%, 5%";
+        outline_thickness = 3;
+        inner_color = "rgba(0, 0, 0, 0.0)"; # no fill
+
+        outer_color = "rgba(33ccffee) rgba(00ff99ee) 45deg";
+        check_color = "rgba(00ff99ee) rgba(ff6633ee) 120deg";
+        fail_color = "rgba(ff6633ee) rgba(ff0066ee) 40deg";
+
+        font_color = "rgb(143, 143, 143)";
+        fade_on_empty = false;
+        rounding = 15;
+
+        position = "0, -20";
+        halign = "center";
+        valign = "center";
+      };
+    };
+  };
   # TODO: Move swaync to its own module if it ever gets more complex than just enalbement.
   services.swaync.enable = true;
   wayland.windowManager.hyprland.enable = true;
@@ -121,6 +149,7 @@
       "$mainMod SHIFT, P, exec, hyprshot -m region"
       "$mainMod, P, exec, hyprshot -m output"
       # "$mainMod, J, togglesplit," # dwindle
+      "$mainMod SHIFT, L, exec, hyprlock"
 
       # Move focus with mainMod + arrow keys
       "$mainMod, M, movefocus, l"
