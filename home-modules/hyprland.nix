@@ -1,4 +1,9 @@
-{ ... } : {
+{ pkgs, ... } : {
+  home.packages = with pkgs; [
+    hyprshot
+  ];
+  # TODO: Move swaync to its own module if it ever gets more complex than just enalbement.
+  services.swaync.enable = true;
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
@@ -81,7 +86,7 @@
       disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
     };
 
-# https://wiki.hyprland.org/Configuring/Variables/#input
+    # https://wiki.hyprland.org/Configuring/Variables/#input
     input = {
       kb_layout = "us";
 
@@ -99,7 +104,9 @@
     };
 
     gestures = {
-      workspace_swipe = false;
+      workspace_swipe = true;
+      workspace_swipe_fingers = 3;
+      workspace_swipe_distance = 150;
     };
 
     "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
@@ -110,9 +117,10 @@
       "$mainMod, Q, killactive,"
       "$mainMod SHIFT, Q, exit,"
       # "$mainMod, E, exec, $fileManager"
-      "$mainMod, V, togglefloating,"
-      "$mainMod, P, pseudo," # dwindle
-      "$mainMod, J, togglesplit," # dwindle
+      # "$mainMod, V, togglefloating,"
+      "$mainMod SHIFT, P, exec, hyprshot -m region"
+      "$mainMod, P, exec, hyprshot -m output"
+      # "$mainMod, J, togglesplit," # dwindle
 
       # Move focus with mainMod + arrow keys
       "$mainMod, M, movefocus, l"
