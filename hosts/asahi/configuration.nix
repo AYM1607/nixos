@@ -41,6 +41,7 @@
       "UG_LivingRoom_5G" = {
         pskRaw = "ext:home_psk";
       };
+      "Woods WiFi" = {};
     };
   };
 
