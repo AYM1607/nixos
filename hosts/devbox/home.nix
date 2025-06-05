@@ -1,4 +1,4 @@
-{ config, pkgs, ... } :
+{ inputs, config, pkgs, ... } :
 
 {
 
@@ -28,6 +28,13 @@
       exercism
       # Thin provisioning tools
       thin-provisioning-tools
+      pkgs.writeShellApplication {
+        name = "sas";
+        runtimeInputs = [ inputs.ssh-agent-switcher.aarch64-linux.default ];
+        text = ''
+          ssh-agent-switcher
+        '';
+      }
     ];
 
     stateVersion = "24.11";

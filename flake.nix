@@ -35,6 +35,11 @@
     walker = {
       url = "github:abenz1267/walker/v0.12.23";
     };
+
+    # ssh-agent forwarder for linux.
+    ssh-agent-switcher = {
+      url = "github:AYM1607/ssh-agent-switcher/6cd7ce973cf08656d42e475945216d8c0f0b0c7b"
+    }
   };
 
   outputs = {
@@ -47,7 +52,9 @@
     nixos-hardware,
     home-manager,
     ghostty,
-    nixgl, ...
+    nixgl,
+    ssh-agent-switcher,
+    ...
   }@inputs: {
     nixosConfigurations = {
       nixlap = nixpkgs.lib.nixosSystem {
