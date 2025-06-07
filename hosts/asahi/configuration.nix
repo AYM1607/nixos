@@ -116,6 +116,7 @@
     # Misc utils
     ripgrep
     fzf
+    unzip
     # Terminal
     ghostty.packages.aarch64-linux.default
     kitty
