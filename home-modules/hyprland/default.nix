@@ -1,64 +1,19 @@
 { pkgs, ... } : {
+  imports = [
+    ./hyprpaper.nix
+    ./hyprlock.nix
+    ./hypridle.nix
+    ./walker.nix
+    ./waybar.nix
+  ];
+
+  # Screenshots.
   home.packages = with pkgs; [
     hyprshot
   ];
-  programs.hyprlock = {
-    enable = true;
-    settings = {
-      background = {
-        monitor = "";
-        color = "rgba(25, 20, 20, 1.0)";
-        blur_passes = 2;
-      };
-      input-field = {
-        monitor = "";
-        size = "20%, 5%";
-        outline_thickness = 3;
-        inner_color = "rgba(0, 0, 0, 0.0)"; # no fill
-
-        outer_color = "rgba(33ccffee) rgba(00ff99ee) 45deg";
-        check_color = "rgba(00ff99ee) rgba(ff6633ee) 120deg";
-        fail_color = "rgba(ff6633ee) rgba(ff0066ee) 40deg";
-
-        font_color = "rgb(143, 143, 143)";
-        fade_on_empty = false;
-        rounding = 15;
-
-        position = "0, -20";
-        halign = "center";
-        valign = "center";
-      };
-    };
-  };
-  # TODO: Move to its own module.
-  services.hypridle = {
-    enable = true;
-    settings = {
-      general = {
-        lock_cmd = "pidof hyprlock || hyprlock";        # Avoid starting hyprlock multiple times.
-        before_sleep_cmd = "loginctl lock-session";     # lock before suspend.
-        after_sleep_cmd = "hyprctl dispatch dpms on";   # to avoid having to press a key twice to turn on the display.
-      };
-      listener = [
-        {
-          timeout = 150;                              # 2.5min.
-          on-timeout = "brightnessctl -s set 10";     # set monitor backlight to minimum, avoid 0 on OLED monitor.
-          on-resume = "brightnessctl -r";             # monitor backlight restore.
-        }
-        {
-          timeout = 300;                              # 5min.
-          on-timeout = "loginctl lock-session";       # lock screen when timeout has passed.
-        }
-        {
-          timeout = 330;                                                # 5.5min
-          on-timeout = "hyprctl dispatch dpms off";                     # screen off when timeout has passed
-          on-resume = "hyprctl dispatch dpms on && brightnessctl -r";   # screen on when activity is detected after timeout has fired.
-        }
-      ];
-    };
-  };
-  # TODO: Move swaync to its own module if it ever gets more complex than just enalbement.
+  # Notifications daemon.
   services.swaync.enable = true;
+
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
@@ -73,6 +28,10 @@
     env = [
       "XCURSOR_SIZE,24"
       "HYPRCURSOR_SIZE,24"
+    ];
+
+    exec-once = [
+      "sway-audio-idle-inhibit" # TODO: Check if it can be conditional on the package existing.
     ];
 
     general = {
