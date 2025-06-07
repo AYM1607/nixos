@@ -4,39 +4,152 @@
       "waybar"
     ];
   };
+  home.file.".config/waybar/style.css" = {
+    text = ''
+    * {
+      font-family: "CaskaydiaCove Nerd Font", "Font Awesome 6 Free", "Font Awesome 6 Free Solid";
+      font-weight: bold;
+      font-size: 16px;
+      color: #dcdfe1;
+    }
+
+    #waybar {
+      background-color: rgba(0, 0, 0, 0);
+      border: none;
+      box-shadow: none;
+    }
+
+    #workspaces,
+    #window,
+    #tray{
+      /*background-color: rgba(29,31,46, 0.95);*/
+      background-color: rgba(15,27,53,0.9);
+      padding: 4px 6px;
+      margin-top: 6px;
+      margin-left: 6px;
+      margin-right: 6px;
+      border-radius: 10px;
+      border-width: 0px;
+    }
+
+    #clock,
+    #custom-power{
+      background-color: rgba(15,27,53,0.9);
+      margin-top: 6px;
+      margin-right: 6px;
+      /*margin-bottom: 4px;*/
+      padding: 4px 2px;
+      border-radius: 0 10px 10px 0;
+      border-width: 0px;
+    }
+
+    #idle_inhibitor,
+    #custom-lock{
+      background-color: rgba(15,27,53,0.9);
+      margin-top: 6px;
+      margin-left: 6px;
+      /*margin-bottom: 4px;*/
+      padding: 4px 2px;
+      border-radius: 10px 0 0 10px;
+      border-width: 0px;
+    }
+
+    #custom-reboot,
+    #bluetooth,
+    #battery,
+    #wireplumber,
+    #backlight,
+    #network,
+    #custom-temperature,
+    #memory,
+    #cpu{
+      background-color: rgba(15,27,53,0.9);
+      margin-top: 6px;
+      /*margin-bottom: 4px;*/
+      padding: 4px 2px;
+      border-width: 0px;
+    }
+
+    #custpm-temperature.critical,
+    #pulseaudio.muted {
+      color: #FF0000;
+      padding-top: 0;
+    }
+
+    #bluetooth:hover,
+    #network:hover,
+    /*#tray:hover,*/
+    #backlight:hover,
+    #battery:hover,
+    #pulseaudio:hover,
+    #custom-temperature:hover,
+    #memory:hover,
+    #cpu:hover,
+    #clock:hover,
+    #custom-lock:hover,
+    #custom-reboot:hover,
+    #custom-power:hover,
+    /*#workspaces:hover,*/
+    #window:hover {
+      background-color: rgba(70, 75, 90, 0.9);
+    }
+
+    #workspaces button:hover{
+      background-color: rgba(97, 175, 239, 0.2);
+      padding: 2px 8px;
+      margin: 0 2px;
+      border-radius: 10px;
+    }
+
+    #workspaces button.active {
+      background-color: #61afef; /* 蓝色高亮 */
+      color: #ffffff;
+      padding: 2px 8px;
+      margin: 0 2px;
+      border-radius: 10px;
+    }
+
+    #workspaces button {
+      background: transparent;
+      border: none;
+      color: #888888;
+      padding: 2px 8px;
+      margin: 0 2px;
+      font-weight: bold;
+    }
+
+    #window {
+      font-weight: 500;
+      font-style: italic;
+    }
+    '';
+  };
   programs.waybar = {
     enable = true;
     settings = [
       {
-        # "layer": "top", # Waybar at top layer
-        # "position": "bottom", # Waybar position (top|bottom|left|right)
-        height = 30; # Waybar height (to be removed for auto height)
-        # "width": 1280, # Waybar width
-        spacing = 4; # Gaps between modules (4px)
-        # Choose the order of the modules
+        layer = "top";
+        position = "top";
+        height = 32;
+        spacing = 0;
         modules-left = [
-            "hyprland/workspaces"
+          "hyprland/workspaces"
+          "tray"
+          "custom/lock"
+          "custom/reboot"
+          "custom/power"
         ];
-        modules-center = [
-            "hyprland/window"
-        ];
+        modules-center = [];
         modules-right = [
-            "mpd"
             "idle_inhibitor"
-            "wireplumber"
             "network"
-            "power-profiles-daemon"
+            "wireplumber"
             "cpu"
             "memory"
-            "temperature"
             "backlight"
-            "keyboard-state"
-            "sway/language"
             "battery"
             "battery#bat2"
             "clock"
-            "tray"
-            "custom/power"
         ];
         # Modules configuration
         "hyprland/workspaces" = {
@@ -44,61 +157,23 @@
             all-outputs = true;
             warp-on-scroll = false;
             format = "{name} {icon}";
+            on-click =  "activate";
+            persistent-workspaces = {
+              "*" = [ 1 2 3 4 5 6 7 8 9 ];
+            };
             format-icons = {
-                active = "";
-                default = "";
+              "1" = "";
+              "7" = "󰓇";
+              "8" = "";
+              "9" = "󰍨";
+              "default" = "";
             };
-        };
-        keyboard-state = {
-            numlock = true;
-            capslock = true;
-            format = "{name} {icon}";
-            format-icons = {
-                locked = "";
-                unlocked = "";
-            };
-        };
-        # "sway/mode": {
-        #     "format": "<span style=\"italic\">{}</span>"
-        # },
-        # "sway/scratchpad": {
-        #     "format": "{icon} {count}",
-        #     "show-empty": false,
-        #     "format-icons": ["", ""],
-        #     "tooltip": true,
-        #     "tooltip-format": "{app}: {title}"
-        # },
-        mpd = {
-            format = "{stateIcon} {consumeIcon}{randomIcon}{repeatIcon}{singleIcon}{artist} - {album} - {title} ({elapsedTime:%M:%S}/{totalTime:%M:%S}) ⸨{songPosition}|{queueLength}⸩ {volume}% ";
-            format-disconnected = "Disconnected ";
-            format-stopped = "{consumeIcon}{randomIcon}{repeatIcon}{singleIcon}Stopped ";
-            unknown-tag = "N/A";
-            interval = 5;
-            consume-icons = {
-                on = " ";
-            };
-            random-icons = {
-                off = "<span color=\"#f53c3c\"></span> ";
-                on = " ";
-            };
-            repeat-icons = {
-                on = " ";
-            };
-            single-icons = {
-                on = "1 ";
-            };
-            state-icons = {
-                paused = "";
-                playing = "";
-            };
-            tooltip-format = "MPD (connected)";
-            tooltip-format-disconnected = "MPD (disconnected)";
         };
         idle_inhibitor = {
-            format = "{icon}";
+            format = " {icon}";
             format-icons = {
-                activated = "";
-                deactivated = "";
+                activated = "󰾨 ";
+                deactivated = "󱡥 ";
             };
         };
         tray = {
@@ -115,39 +190,25 @@
             format-alt = "{:%Y-%m-%d}";
         };
         cpu = {
-            format = "{usage}% ";
+            format = "<span color='#FF9F0A'>  </span>{usage}% ";
             tooltip = false;
         };
         memory = {
-            format = "{}% ";
-        };
-        temperature = {
-            # "thermal-zone": 2,
-            # "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-            critical-threshold = 80;
-            # "format-critical": "{temperatureC}°C {icon}",
-            format = "{temperatureC}°C {icon}";
-            format-icons = ["" "" ""];
+            format = "<span color='#8A2BE2'>  </span>{}% ";
         };
         backlight = {
-            # "device": "acpi_video1",
-            format = "{percent}% {icon}";
-            format-icons = ["" "" "" "" "" "" "" "" ""];
+            format = "<span color='#FFD700'> {icon}</span>{percent}% ";
+            format-icons = [" " " " " " " " " " " " " " " " " "];
         };
         battery = {
             states = {
-                # "good": 95,
                 warning = 30;
                 critical = 15;
             };
-            format = "{capacity}% {icon}";
-            format-full = "{capacity}% {icon}";
-            format-charging = "{capacity}% ";
-            format-plugged = "{capacity}% ";
-            format-alt = "{time} {icon}";
-            # "format-good": "", // An empty format will hide the module
-            # "format-full": "",
+            format = "<span color='#28CD41'> {icon} </span>{capacity}% ";
+            format-charging = "<span color='#28CD41'>  </span>{capacity}% ";
             format-icons = ["" "" "" "" ""];
+            interval = 1;
         };
         "battery#bat2" = {
             bat = "BAT2";
@@ -164,45 +225,38 @@
           };
         };
         network = {
-            # "interface": "wlp2*", // (Optional) To force the use of this interface
-            format-wifi = "{essid} ({signalStrength}%) ";
-            format-ethernet = "{ipaddr}/{cidr} ";
-            tooltip-format = "{ifname} via {gwaddr} ";
-            format-linked = "{ifname} (No IP) ";
-            format-disconnected = "Disconnected ⚠";
-            format-alt = "{ifname}: {ipaddr}/{cidr}";
+          format-wifi = "<span color='#00FFFF'>  </span> ";
+          format-ethernet =  "<span color='#7FFF00'> {ipaddr} 󰈀 </span> ";
+          tooltip-format = "{essid}({ifname}) -> {ipaddr}/{cidr}";
+          format-linked = "<span color='#FFA500'> 󱘖 </span>{ifname} (No IP) ";
+          format-disconnected = "<span color='#FF4040'>  </span>Disconnected ";
+          interval = 1;
         };
         wireplumber = {
-            format = "{volume}% {icon}";
-            format-muted = "";
+            format = " {icon} {volume}% ";
+            format-muted = "<span color='#FF4040'>  </span>";
             # on-click = "helvum";
             max-volume = 150;
             scroll-step =  0.15;
-            format-icons = [" " " " " "];
+            format-icons = ["" " " " "];
         };
-        "custom/media" = {
-            format = "{icon} {text}";
-            return-type = "json";
-            max-length = 40;
-            format-icons = {
-                spotify = "";
-                default = "🎜";
-            };
-            escape = true;
-            exec = "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"; # Script in resources folder;
-            # "exec": "$HOME/.config/waybar/mediaplayer.py --player spotify 2> /dev/null" // Filter player based on name
+        "custom/lock" = {
+          format = "<span color='#00FFFF'>  </span>";
+          on-click =  "hyprlock";
+          tooltip = true;
+          tooltip-format = "lock";
+        };
+        "custom/reboot" = {
+          format = "<span color='#FFD700'>  </span>";
+          on-click = "systemctl reboot";
+          tooltip = true;
+          tooltip-format = "reboot";
         };
         "custom/power" = {
-            format  = "⏻ ";
-            tooltip = false;
-            menu = "on-click";
-            menu-file = "$HOME/.config/waybar/power_menu.xml"; # Menu file in resources folde;
-            "menu-actions" = {
-                shutdown = "shutdown";
-                reboot = "reboot";
-                suspend = "systemctl suspend";
-                hibernate = "systemctl hibernate";
-            };
+          format = "<span color='#FF4040'>  </span>";
+          on-click = "systemctl poweroff";
+          tooltip = true;
+          tooltip-format = "poweroff";
         };
       }
     ];
