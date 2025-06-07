@@ -133,6 +133,7 @@
     packages = with pkgs; [
       nerd-fonts.bigblue-terminal
       nerd-fonts.fira-code
+      nerd-fonts.caskaydia-cove
     ];
   };
 
