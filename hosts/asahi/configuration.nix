@@ -124,6 +124,8 @@
     palenight-theme
     # Lock screen
     hyprlock
+    # Idling
+    sway-audio-idle-inhibit
   ];
 
   fonts = {
