@@ -241,7 +241,7 @@
             format-icons = ["" " " " "];
         };
         "custom/lock" = {
-          format = "<span color='#00FFFF'>  </span>";
+          format = "<span color='#00FFFF'>   </span>";
           on-click =  "hyprlock";
           tooltip = true;
           tooltip-format = "lock";
@@ -253,7 +253,7 @@
           tooltip-format = "reboot";
         };
         "custom/power" = {
-          format = "<span color='#FF4040'>  </span>";
+          format = "<span color='#FF4040'>   </span>";
           on-click = "systemctl poweroff";
           tooltip = true;
           tooltip-format = "poweroff";
