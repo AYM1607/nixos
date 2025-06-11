@@ -8,6 +8,9 @@
     nix-darwin.url = "github:LnL7/nix-darwin/nix-darwin-25.05";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs-darwin";
 
+    # Required for webcord.
+    nixpkgs-electron-32.url = "github:NixOS/nixpkgs/782740762fb281404740b6b7084d356c3dab1173";
+
     # required to match on a specific version of Go for AKS dev setup.
     nixpkgs-msft-go.url = "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269";
 

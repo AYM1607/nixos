@@ -37,6 +37,7 @@ in
     packages = with pkgs; [
       # Audio
       wireplumber
+      spotify-player
       # Screen management
       brightnessctl
       # Secret management.
@@ -45,7 +46,7 @@ in
       # Browsers
       ungoogled-chromium
       # Coms
-      webcord
+      (webcord.override { electron = inputs.nixpkgs-electron-32.legacyPackages."aarch64-linux".electron; })
       whatsie
     ];
 
@@ -78,6 +79,10 @@ in
       name = "palenight";
       package = pkgs.palenight-theme;
     };
+  };
+  qt = {
+    enable = true;
+    platformTheme = "gtk";
   };
   dconf.settings = {
     "org/gnome/desktop/interface" = {

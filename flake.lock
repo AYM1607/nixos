@@ -236,6 +236,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-electron-32": {
+      "locked": {
+        "lastModified": 1729595756,
+        "narHash": "sha256-rNaLWDqjgy23Y6M3K/e7Kiyimq04ikDMrErpqgXWcV0=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "782740762fb281404740b6b7084d356c3dab1173",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "782740762fb281404740b6b7084d356c3dab1173",
+        "type": "github"
+      }
+    },
     "nixpkgs-msft-go": {
       "locked": {
         "lastModified": 1725980463,
@@ -358,6 +374,7 @@
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-darwin": "nixpkgs-darwin",
+        "nixpkgs-electron-32": "nixpkgs-electron-32",
         "nixpkgs-msft-go": "nixpkgs-msft-go",
         "nixpkgs-unstable": "nixpkgs-unstable_2",
         "sops-nix": "sops-nix",
