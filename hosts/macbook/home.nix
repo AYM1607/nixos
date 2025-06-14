@@ -36,7 +36,7 @@
       homeconf = "nvim /Users/uagm/nixos/hosts/macbook/home.nix";
       nvconf = "nvim /Users/uagm/nixos/home-modules/explicit-configs/nvim/init.lua";
       # TODO: Interpolate the name of the host here.
-      nrsw = "darwin-rebuild switch --flake /Users/uagm/nixos#macbook";
+      nrsw = "sudo darwin-rebuild switch --flake /Users/uagm/nixos#macbook";
     };
   };
 }
