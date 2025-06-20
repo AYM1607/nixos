@@ -39,7 +39,8 @@
       fzf
       ripgrep
       (config.lib.nixGL.wrap ghostty.packages.x86_64-linux.default)
-      (nerdfonts.override { fonts = [ "BigBlueTerminal" ]; })
+      nerd-fonts.bigblue-terminal
+      nerd-fonts.fira-code
     ];   
 
     stateVersion = "24.11";
