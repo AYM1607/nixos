@@ -49,7 +49,7 @@
   programs.zsh = {
     shellAliases = {
       homesw = "home-manager --flake /home/jmug/nixos#nixlapmsft --extra-experimental-features nix-command --extra-experimental-features flakes switch";
-      adev = "/home/jmug/dev/aks-rp/bin/aksdev";
+      radev = "/home/jmug/dev/aks-rp/bin/aksdev";
       ksc = "KUBECONFIG=/home/jmug/Downloads/cxkubeconfig.yaml kubectl";
       kso = "KUBECONFIG=/home/jmug/Downloads/overlaykubeconfig.yaml kubectl";
       k = "kubectl";
