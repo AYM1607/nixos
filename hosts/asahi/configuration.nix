@@ -43,7 +43,12 @@
       "UG_LivingRoom_5G" = {
         pskRaw = "ext:home_psk";
       };
+      "pioneer" = {
+        pskRaw = "ext:woods_pioneer_psk";
+      };
       "Woods WiFi" = {};
+      # Midway Laundry
+      "NETGEARFDD76C-3" = {};
     };
   };
 
