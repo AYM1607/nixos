@@ -35,6 +35,9 @@ in
     homeDirectory = "/home/jmug";
 
     packages = with pkgs; [
+      # Media
+      loupe
+      vlc
       # Audio
       wireplumber
       spotify-player
@@ -48,6 +51,7 @@ in
       # Coms
       (webcord.override { electron = inputs.nixpkgs-electron-32.legacyPackages."aarch64-linux".electron; })
       whatsie
+      obs-studio
     ];
 
     pointerCursor = {
