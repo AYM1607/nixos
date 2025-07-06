@@ -122,6 +122,7 @@
     ripgrep
     fzf
     unzip
+    nautilus
     # Terminal
     ghostty.packages.aarch64-linux.default
     kitty
