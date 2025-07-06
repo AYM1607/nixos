@@ -152,6 +152,7 @@
     GDK_BACKEND = "wayland";
     NIXOS_OZONE_WL = "1";
     MOZ_ENABLE_WAYLAND = "1";
+    QT_QPA_PLATFORM = "wayland";
     # This caused issues with walker, but might be some other
     # issue with wayland/hyprland, so will leave it here for now.
     # QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
@@ -164,6 +165,17 @@
     displayManager.gdm = {
       enable = true;
       wayland = true;
+    };
+  };
+  # This is used to scale the gdm login screen,
+  # try to set it up for fractional scaling in 
+  # the future.
+  home-manager.users.gdm = { lib, ... }: {
+    home.stateVersion = "25.05"; # Do not change!!!
+    dconf.settings = {
+      "org/gnome/desktop/interface" = {
+        scaling-factor = lib.hm.gvariant.mkUint32 2;
+      };
     };
   };
 
