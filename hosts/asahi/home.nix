@@ -15,16 +15,16 @@ in
     # TODO: Move all hyprland related config to its own module.
     ../../home-modules/hyprland
 
-    ../../home-modules/zsh.nix
     ../../home-modules/direnv.nix
-    ../../home-modules/nvim.nix
-    ../../home-modules/tmux.nix
+    ../../home-modules/ghostty-config.nix
     ../../home-modules/git.nix
     ../../home-modules/lazygit.nix
-    ../../home-modules/starship.nix
-    ../../home-modules/ghostty-config.nix
+    ../../home-modules/nvim.nix
     ../../home-modules/sops.nix
     ../../home-modules/ssh-client.nix
+    ../../home-modules/starship.nix
+    ../../home-modules/tmux.nix
+    ../../home-modules/zsh.nix
   ];
 
   ghostty.font-size = "14";
