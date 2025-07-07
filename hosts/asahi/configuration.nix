@@ -29,8 +29,6 @@
   hardware.bluetooth.powerOnBoot = false;
   services.blueman.enable = true;
 
-  security.pam.services.hyprlock = {};
-
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -143,6 +141,7 @@
     ];
   };
 
+  security.pam.services.hyprlock = {};
   programs.hyprland = {
     enable = true;
     xwayland.enable = true;
