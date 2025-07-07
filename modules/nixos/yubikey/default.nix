@@ -157,9 +157,9 @@ in
         };
       };
       services = {
-        login.u2fAuth = true;
+        login.u2fAuth = config.yubikey.enable-u2f-auth;
         sudo = {
-          u2fAuth = true;
+          u2fAuth = config.yubikey.enable-u2f-auth;
         };
         # Attempt to auto-unlock gnome-keyring using u2f
         # NOTE: vscode uses gnome-keyring even if we aren't using gnome, which is why it's still here

@@ -3,6 +3,7 @@ keys:
   - &hosts:
     - &nixlap age1cfcfye2unv89fgyuwpvy9sas40jd87kksw7rlgy4cwmcfjqntv2st2jcnp
     - &asahi age1y2kfnx87z2j7te9hu0guderrf2x9m8d0f3gfjjxcdk2va77yj3hsngj2f5
+    - &devbox age1208zkkd9hh8n6v9zn6w75x9ajxd798kc4cv53d6qhkx55juflumquyh3ge
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
@@ -10,3 +11,4 @@ creation_rules:
       - *jmug
       - *nixlap
       - *asahi
+      - *devbox
