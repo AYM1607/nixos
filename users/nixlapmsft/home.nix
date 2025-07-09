@@ -59,6 +59,7 @@
     export GOPRIVATE='goms.io,*.goms.io'
     export GOPROXY='https://goproxyprod.goms.io'
     export PATH=$PATH:$HOME/bin
+    export PATH=$PATH:$HOME/go/bin
     '';
   };
   
