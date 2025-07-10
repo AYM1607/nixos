@@ -47,7 +47,7 @@ in {
       # Browsers
       ungoogled-chromium
       # Coms
-      (webcord.override { electron = inputs.nixpkgs-electron-32.legacyPackages."aarch64-linux".electron; })
+      discord
       whatsie
       obs-studio
 
