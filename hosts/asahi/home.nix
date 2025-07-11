@@ -52,6 +52,8 @@ in
       (webcord.override { electron = inputs.nixpkgs-electron-32.legacyPackages."aarch64-linux".electron; })
       whatsie
       obs-studio
+      # Dev tools
+      flyctl
     ];
 
     pointerCursor = {
@@ -142,6 +144,7 @@ in
 
 
   programs.zsh.shellAliases = {
+    fly = "flyctl";
     # TODO: Interpolate the name of the host here.
     nrsw = "sudo nixos-rebuild switch --flake /home/jmug/nixos#asahi"; # parametrize this as home dir.
   };
