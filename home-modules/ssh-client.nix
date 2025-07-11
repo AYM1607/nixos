@@ -19,7 +19,7 @@
       };
       "forgejo" = {
         host = "code.jmug.me";
-        user = "forgejo";
+        user = "git";
         identityFile = [
           "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
           "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
