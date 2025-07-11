@@ -32,6 +32,7 @@
       pkgs-unstable.kubernetes-controller-tools
       azure-cli
       kubectl
+      kubectl-node-shell
       jq
       yq
       kind
