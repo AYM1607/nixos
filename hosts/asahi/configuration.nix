@@ -44,6 +44,7 @@
       "pioneer" = {
         pskRaw = "ext:woods_pioneer_psk";
       };
+      "Thruline Coffee Co - GuestWiFi" = {};
       "Woods WiFi" = {};
       # Midway Laundry
       "NETGEARFDD76C-3" = {};
