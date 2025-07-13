@@ -78,7 +78,14 @@
           }
         ];
       };
-      asahi = nixpkgs.lib.nixosSystem {
+      asahi = let
+        pkgs-unstable_aarch64-linux = import nixpkgs-unstable {
+          system = "aarch64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };
+      in nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = {
           inherit inputs apple-silicon ghostty;
@@ -87,7 +94,10 @@
           ./hosts/asahi/configuration.nix
           home-manager.nixosModules.home-manager
           {
-            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.extraSpecialArgs = {
+              pkgs-unstable = pkgs-unstable_aarch64-linux;
+              inherit inputs;
+            };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jmug = import ./hosts/asahi/home.nix;

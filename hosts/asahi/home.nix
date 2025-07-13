@@ -1,4 +1,11 @@
-{ lib, config, inputs, pkgs, ...} :
+{
+  lib,
+  config,
+  inputs,
+  pkgs,
+  pkgs-unstable,
+  ...
+} :
 let
   pathToKeys = ../common/keys/yubi;
   yubiKeys =
@@ -54,6 +61,7 @@ in
       obs-studio
       # Dev tools
       flyctl
+      pkgs-unstable.claude-code
     ];
 
     pointerCursor = {
