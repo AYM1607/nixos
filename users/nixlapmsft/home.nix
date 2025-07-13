@@ -42,6 +42,9 @@
       (config.lib.nixGL.wrap ghostty.packages.x86_64-linux.default)
       nerd-fonts.bigblue-terminal
       nerd-fonts.fira-code
+
+      pkgs-unstable.nodejs_24
+      pkgs-unstable.claude-code
     ];   
 
     stateVersion = "24.11";

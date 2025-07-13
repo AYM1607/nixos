@@ -133,7 +133,14 @@
       };
     };
 
-    homeConfigurations = {
+    homeConfigurations = let
+      pkgs-unstable_x86_64-linux = import nixpkgs-unstable {
+        system = "x86_64-linux";
+        config = {
+          allowUnfree = true;
+        };
+      };
+    in {
       alarm = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."aarch64-linux";
         modules = [
@@ -144,7 +151,7 @@
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
         extraSpecialArgs = {
           pkgs-msft-go = nixpkgs-msft-go.legacyPackages."x86_64-linux";
-          pkgs-unstable = nixpkgs-unstable.legacyPackages."x86_64-linux";
+          pkgs-unstable = pkgs-unstable_x86_64-linux;
         };
         modules = [
           ./users/msftdevbox/home.nix
@@ -155,7 +162,7 @@
         extraSpecialArgs = {
           inherit ghostty nixgl;
           pkgs-msft-go = nixpkgs-msft-go.legacyPackages."x86_64-linux";
-          pkgs-unstable = nixpkgs-unstable.legacyPackages."x86_64-linux";
+          pkgs-unstable = pkgs-unstable_x86_64-linux;
         };
         modules = [
           ./users/nixlapmsft/home.nix
