@@ -20,6 +20,8 @@
       "private_keys/ace" = {
         path = "/home/jmug/.ssh/id_ace";
       };
+      "aws/mfa_serial" = {};
+      "aws/role_arn" = {};
     };
   };
 }

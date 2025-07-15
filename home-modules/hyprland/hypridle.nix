@@ -4,8 +4,9 @@
     settings = {
       general = {
         lock_cmd = "pidof hyprlock || hyprlock";        # Avoid starting hyprlock multiple times.
-        before_sleep_cmd = "loginctl lock-session";     # lock before suspend.
+        before_sleep_cmd = "pidof hyprlock || hyprlock --no-fade-in --immediate";     # lock before suspend.
         after_sleep_cmd = "hyprctl dispatch dpms on";   # to avoid having to press a key twice to turn on the display.
+        inhibit_sleep = 3;                              # Wait for hyprlock.
       };
       listener = [
         {

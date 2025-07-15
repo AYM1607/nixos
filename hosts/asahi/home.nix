@@ -62,6 +62,9 @@ in
       # Dev tools
       flyctl
       pkgs-unstable.claude-code
+      # AWS tools
+      awscli2
+      (callPackage ../../nixos-modules/shell-apps/aws-cli-mfa.nix {})
     ];
 
     pointerCursor = {
@@ -155,8 +158,19 @@ in
     fly = "flyctl";
     # TODO: Interpolate the name of the host here.
     nrsw = "sudo nixos-rebuild switch --flake /home/jmug/nixos#asahi"; # parametrize this as home dir.
+    awsmfa = "eval $(aws-cli-mfa)";
+    uawsmfa = "eval $(aws-cli-mfa --unset)";
   };
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  home.activation.aws-cli-mfa-config = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p ~/.config/aws-cli-mfa
+    cat > ~/.config/aws-cli-mfa/config.yaml << EOF
+mfa_serial: $(cat ${config.sops.secrets."aws/mfa_serial".path})
+role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
+session_duration: 43200
+EOF
+  '';
 }
