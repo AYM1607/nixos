@@ -80,6 +80,15 @@ in
     stateVersion = "25.05"; # Do not change!!!
   };
 
+  home.activation.aws-cli-mfa-config = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p ~/.config/aws-cli-mfa
+    cat > ~/.config/aws-cli-mfa/config.yaml << EOF
+mfa_serial: $(cat ${config.sops.secrets."aws/jmug_ace_mfa_serial".path})
+role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
+session_duration: 43200
+EOF
+  '';
+
   gtk = {
     enable = true;
     gtk3 = {
@@ -155,6 +164,13 @@ in
 
 
   programs.zsh.shellAliases = {
+    # TODO BEGIN Interpolate the name of the host here.
+    # flakeconf = "sudo nvim /etc/nixos/flake.nix";
+    # nosconf = "sudo nvim /etc/nixos/hosts/devbox/configuration.nix";
+    # homeconf = "sudo nvim /etc/nixos/hosts/devbox/home.nix";
+    # nvconf = "sudo nvim /etc/nixos/home-modules/explicit-configs/nvim/init.lua";
+    # TODO END Interpolate the name of the host here.
+    rshellconf = "source ~/.zshrc";
     fly = "flyctl";
     # TODO: Interpolate the name of the host here.
     nrsw = "sudo nixos-rebuild switch --flake /home/jmug/nixos#asahi"; # parametrize this as home dir.
@@ -164,13 +180,4 @@ in
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  home.activation.aws-cli-mfa-config = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    mkdir -p ~/.config/aws-cli-mfa
-    cat > ~/.config/aws-cli-mfa/config.yaml << EOF
-mfa_serial: $(cat ${config.sops.secrets."aws/jmug_ace_mfa_serial".path})
-role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
-session_duration: 43200
-EOF
-  '';
 }

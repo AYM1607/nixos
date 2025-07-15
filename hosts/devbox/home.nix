@@ -51,6 +51,10 @@ in {
       whatsie
       obs-studio
 
+      # AWS tools
+      awscli2
+      (callPackage ../../nixos-modules/shell-apps/aws-cli-mfa.nix {})
+
       # Misc
       zig
       neofetch
@@ -75,6 +79,15 @@ in {
     stateVersion = "25.05";
   };
 
+  home.activation.aws-cli-mfa-config = lib.hm.dag.entryAfter ["writeBoundary"] ''
+    mkdir -p ~/.config/aws-cli-mfa
+    cat > ~/.config/aws-cli-mfa/config.yaml << EOF
+mfa_serial: $(cat ${config.sops.secrets."aws/jmug_matcha_mfa_serial".path})
+role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
+session_duration: 43200
+EOF
+  '';
+
   programs.zsh = {
     shellAliases = {
       # TODO BEGIN Interpolate the name of the host here.
@@ -86,6 +99,9 @@ in {
       rshellconf = "source ~/.zshrc";
       # TODO: Interpolate the name of the host here.
       nrsw = "sudo nixos-rebuild switch --flake /home/jmug/nixos#devbox";
+      fly = "flyctl";
+      awsmfa = "eval $(aws-cli-mfa)";
+      uawsmfa = "eval $(aws-cli-mfa --unset)";
     };
     loginExtra = ''
     if [ ! -e "/tmp/ssh-agent.''${USER}" ]; then
