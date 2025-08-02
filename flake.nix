@@ -125,7 +125,14 @@
 
     # Build darwin flake using:
     # $ darwin-rebuild build --flake .#macbook
-    darwinConfigurations = {
+    darwinConfigurations = let
+      pkgs-unstable_aarch64-darwin = import nixpkgs-unstable {
+        system = "aarch64-darwin";
+        config = {
+          allowUnfree = true;
+        };
+      };
+    in {
       "macbook" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         specialArgs = {
@@ -135,6 +142,9 @@
           ./hosts/macbook/configuration.nix
           home-manager.darwinModules.home-manager
           {
+            home-manager.extraSpecialArgs = {
+              pkgs-unstable = pkgs-unstable_aarch64-darwin;
+            };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.uagm.imports = [ ./hosts/macbook/home.nix ];

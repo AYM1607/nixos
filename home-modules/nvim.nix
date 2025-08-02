@@ -1,17 +1,32 @@
-{ pkgs, ... } : {
-  
-  home.packages = with pkgs; [
-      neovim
-  ];
+{ config, lib, pkgs, ... }:
 
-  programs.zsh = {
-    shellAliases = {
-      n = "nvim";
+with lib;
+
+{
+  options.nvim = {
+    enable = mkEnableOption "Enable custom neovim configuration";
+
+    package = mkOption {
+      type = types.package;
+      default = pkgs.neovim;
+      description = "The neovim package to use";
     };
   };
 
-  home.file.".config/nvim" = {
-    recursive = true;
-    source = ./explicit-configs/nvim;
+  config = mkIf config.nvim.enable {
+    home.packages = [
+      config.nvim.package
+    ];
+
+    programs.zsh = {
+      shellAliases = {
+        n = "nvim";
+      };
+    };
+
+    home.file.".config/nvim" = {
+      recursive = true;
+      source = ./explicit-configs/nvim;
+    };
   };
 }

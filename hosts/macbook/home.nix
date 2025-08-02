@@ -1,4 +1,9 @@
-{ config, pkgs, ... } : {
+{
+  config,
+  pkgs,
+  pkgs-unstable,
+  ...
+} : {
   
   imports = [
     ../../home-modules/tmux-darwin.nix
@@ -10,6 +15,11 @@
     # I should update the module with an option for adding winodow decorations.
     ../../home-modules/ghostty-mac-config.nix
   ];
+
+  nvim = {
+    enable = true;
+    package = pkgs-unstable.neovim;
+  };
 
   home = {
     username = "uagm";
@@ -23,6 +33,17 @@
       lua-language-server
       starship
       audacity
+      pkgs-unstable.claude-code
+      (pkgs-unstable.litellm.overrideAttrs (oldAttrs: rec {
+        version = "1.74.9";
+        src = pkgs.fetchFromGitHub {
+          owner = "BerriAI";
+          repo = "litellm";
+          tag = "v${version}-stable";
+          hash = "sha256-SGZwt2jzAQbOMlvudqPWat281su6OwT7JG2CNSMjL3A=";
+        };
+      }))
+      pkgs-unstable.opencode
     ];
 
     stateVersion = "24.11";
