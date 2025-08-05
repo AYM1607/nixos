@@ -165,7 +165,7 @@
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.uagm.imports = [ ./hosts/msft-mac/home.nix ];
+            home-manager.users.jmug.imports = [ ./hosts/msft-mac/home.nix ];
           }
         ];
       };
