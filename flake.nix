@@ -151,6 +151,24 @@
           }
         ];
       };
+      "msft-mac" = nix-darwin.lib.darwinSystem {
+        system = "aarch64-darwin";
+        specialArgs = {
+          inherit inputs ghostty self;
+        };
+        modules = [
+          ./hosts/msft-mac/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.extraSpecialArgs = {
+              pkgs-unstable = pkgs-unstable_aarch64-darwin;
+            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.uagm.imports = [ ./hosts/msft-mac/home.nix ];
+          }
+        ];
+      };
     };
 
     homeConfigurations = let

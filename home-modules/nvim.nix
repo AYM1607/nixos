@@ -15,6 +15,7 @@ with lib;
 
   config = mkIf config.nvim.enable {
     home.packages = [
+      pkgs.lua-language-server
       config.nvim.package
     ];
 

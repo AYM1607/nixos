@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   home = {
     packages = with pkgs; [
-      lua-language-server
-      neovim
+      fzf
+      ripgrep
       zip
       unzip
       eza
@@ -12,7 +12,6 @@
   programs.zsh = {
     shellAliases = {
       ls = "eza";
-      n = "nvim";
     };
   };
 }

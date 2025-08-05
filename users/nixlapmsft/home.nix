@@ -3,13 +3,13 @@
 {
   imports = [
     ../../home-modules/default.nix
-    ../../home-modules/nvim.nix
-    ../../home-modules/tmux.nix
-    ../../home-modules/lazygit.nix
-    ../../home-modules/starship.nix
     ../../home-modules/direnv.nix
-    ../../home-modules/zsh.nix
     ../../home-modules/ghostty-mac-config.nix
+    ../../home-modules/lazygit.nix
+    ../../home-modules/nvim.nix
+    ../../home-modules/starship.nix
+    ../../home-modules/tmux.nix
+    ../../home-modules/zsh.nix
   ];
 
   nixGL.packages = nixgl.packages;

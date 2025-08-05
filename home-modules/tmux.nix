@@ -24,6 +24,7 @@
     baseIndex = 1;
     escapeTime = 10;
     customPaneNavigationAndResize = true;
+    sensibleOnTop = !pkgs.stdenv.isDarwin;
     extraConfig = ''
       set -ga terminal-overrides ",xterm-256color*:Tc"
       # Keep path when creating a new window.
