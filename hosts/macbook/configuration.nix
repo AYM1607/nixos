@@ -29,6 +29,7 @@
       "secretive"
       "gcc-arm-embedded"
       "librewolf"
+      "karabiner-elements"
     ];
   };
 

@@ -6,14 +6,14 @@
 } : {
   
   imports = [
-    ../../home-modules/tmux.nix
-    ../../home-modules/lazygit.nix
-    ../../home-modules/zsh.nix
-    ../../home-modules/starship.nix
-    ../../home-modules/nvim.nix
     ../../home-modules/direnv.nix
-    # I should update the module with an option for adding winodow decorations.
     ../../home-modules/ghostty-config.nix
+    ../../home-modules/karabiner.nix
+    ../../home-modules/lazygit.nix
+    ../../home-modules/nvim.nix
+    ../../home-modules/starship.nix
+    ../../home-modules/tmux.nix
+    ../../home-modules/zsh.nix
   ];
 
   ghostty = {
