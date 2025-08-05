@@ -9,6 +9,7 @@
     ../../home-modules/default.nix
     ../../home-modules/direnv.nix
     ../../home-modules/ghostty-config.nix
+    ../../home-modules/karabiner.nix
     ../../home-modules/lazygit.nix
     ../../home-modules/nvim.nix
     ../../home-modules/starship.nix
@@ -61,6 +62,14 @@
     ];
 
     stateVersion = "25.05";
+  };
+
+  programs.ssh = {
+    enable = true;
+    extraConfig = ''
+Host *
+  IdentityAgent /Users/jmug/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+    '';
   };
 
   programs.zsh = {

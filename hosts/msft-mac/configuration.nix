@@ -25,6 +25,8 @@
     casks = [
       "ghostty"
       "secretive"
+      "karabiner-elements"
+      "raycast"
     ];
   };
 
