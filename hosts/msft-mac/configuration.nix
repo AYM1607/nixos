@@ -1,4 +1,13 @@
 { self, pkgs, ... }: {
+
+  imports = [ ./hotkeys.nix ];
+
+  # To reflect hotkeys without a login cycle.
+  system.activationScripts.postActivation.text = ''
+      # Following line should allow us to avoid a logout/login cycle when changing settings
+      sudo -u jmug /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+      '';
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -20,13 +29,13 @@
     };
 
     taps = [];
-    brews = [
-    ];
+    brews = [];
     casks = [
       "ghostty"
       "secretive"
       "karabiner-elements"
       "raycast"
+      "logi-options+"
     ];
   };
 
