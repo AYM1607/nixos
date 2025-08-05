@@ -36,6 +36,7 @@
       "karabiner-elements"
       "raycast"
       "logi-options+"
+      "insta360-link-controller"
     ];
   };
 
