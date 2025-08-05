@@ -11,6 +11,7 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     neofetch
+    git-credential-manager
   ];
 
   system.primaryUser = "jmug";
