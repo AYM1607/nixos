@@ -36,6 +36,7 @@
       yq
       nerd-fonts.bigblue-terminal
       nerd-fonts.fira-code
+      azure-cli
 
       go
       gopls
@@ -46,8 +47,6 @@
       pkgs-unstable.kubectl-node-shell
       pkgs-unstable.kind
       pkgs-unstable.kubernetes-helm
-
-      pkgs-unstable.azure-cli
 
       pkgs-unstable.claude-code
       (pkgs-unstable.litellm.overrideAttrs (oldAttrs: rec {
@@ -80,6 +79,7 @@ Host *
       homeconf = "nvim /Users/jmug/nixos/hosts/macbook/home.nix";
       nvconf = "nvim /Users/jmug/nixos/home-modules/explicit-configs/nvim/init.lua";
       # TODO: Interpolate the name of the host here.
+      rshellconf="source /Users/jmug/.zshrc";
       radev = "/Users/jmug/dev/aks-rp/bin/aksdev";
       ksc = "KUBECONFIG=/Users/jmug/Downloads/cxkubeconfig.yaml kubectl";
       kso = "KUBECONFIG=/Users/jmug/Downloads/overlaykubeconfig.yaml kubectl";
@@ -92,6 +92,7 @@ Host *
     export GOPROXY='https://goproxyprod.goms.io'
     export PATH=$PATH:$HOME/bin
     export PATH=$PATH:$HOME/go/bin
+    export __AKS_DOCKER_BUILD_MOUNT_NETRC=1
     '';
   };
 }
