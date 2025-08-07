@@ -1,4 +1,14 @@
 { self, pkgs, ... }: {
+
+  imports = [
+    ./hotkeys.nix
+  ];
+
+  # To reflect hotkeys without a login cycle.
+  system.activationScripts.postActivation.text = ''
+  sudo -u uagm /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  '';
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
@@ -28,8 +38,10 @@
       "kicad"
       "secretive"
       "gcc-arm-embedded"
-      "librewolf"
       "karabiner-elements"
+      "raycast"
+      "logi-options+"
+      "insta360-link-controller"
     ];
   };
 
