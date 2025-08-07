@@ -18,6 +18,7 @@ in {
     ../../home-modules/karabiner.nix
     ../../home-modules/lazygit.nix
     ../../home-modules/nvim.nix
+    ../../home-modules/secretive.nix
     ../../home-modules/starship.nix
     ../../home-modules/tmux.nix
     ../../home-modules/zsh.nix

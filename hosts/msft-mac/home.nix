@@ -18,6 +18,7 @@ in {
     ../../home-modules/karabiner.nix
     ../../home-modules/lazygit.nix
     ../../home-modules/nvim.nix
+    ../../home-modules/nvim.nix
     ../../home-modules/starship.nix
     ../../home-modules/tmux.nix
     ../../home-modules/zsh.nix
@@ -69,13 +70,6 @@ in {
     stateVersion = "25.05";
   };
 
-  programs.ssh = {
-    enable = true;
-    extraConfig = ''
-Host *
-  IdentityAgent ${homeDirectory}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
-    '';
-  };
 
   programs.zsh = {
     shellAliases = {
