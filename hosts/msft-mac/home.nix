@@ -14,6 +14,7 @@ in {
     ../../home-modules/default.nix
     ../../home-modules/direnv.nix
     ../../home-modules/ghostty-config.nix
+    ../../home-modules/homebrew.nix
     ../../home-modules/karabiner.nix
     ../../home-modules/lazygit.nix
     ../../home-modules/nvim.nix
