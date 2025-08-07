@@ -57,6 +57,7 @@ let
   # If you want to keep some hotkeys enabled, simply comment them out or remove them from the following list.
   disableHotKeys = with hotkeyEnums; [
     showSpotlightSearch
+    selectPreviousInputSource
   ];
 
   enabledHotKeys = with hotkeyEnums; [

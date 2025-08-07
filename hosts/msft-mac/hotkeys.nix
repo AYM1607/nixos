@@ -55,7 +55,9 @@ let
   # Define which hotkeys you want to disable
   # If you want to disable all hotkeys, you can use the `hotkeyEnums` directly
   # If you want to keep some hotkeys enabled, simply comment them out or remove them from the following list.
-  disableHotKeys = with hotkeyEnums; [];
+  disableHotKeys = with hotkeyEnums; [
+    selectPreviousInputSource
+  ];
 
   enabledHotKeys = with hotkeyEnums; [
     moveLeftASpace
