@@ -148,7 +148,7 @@
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users.uagm.imports = [ ./hosts/macbook/home.nix ];
+            home-manager.users.jmug.imports = [ ./hosts/macbook/home.nix ];
           })
         ];
       };
