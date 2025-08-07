@@ -45,6 +45,7 @@
       "raycast"
       "logi-options+"
       "insta360-link-controller"
+      "yubico-authenticator" # TODO: Defer to a module that manages yubikeys for darwin.
     ];
   };
 
