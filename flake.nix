@@ -159,14 +159,15 @@
         modules = [
           ./hosts/msft-mac/configuration.nix
           home-manager.darwinModules.home-manager
-          {
+          ({ config, ... }: {
             home-manager.extraSpecialArgs = {
               pkgs-unstable = pkgs-unstable_aarch64-darwin;
+              inherit (config) user;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.jmug.imports = [ ./hosts/msft-mac/home.nix ];
-          }
+          })
         ];
       };
     };

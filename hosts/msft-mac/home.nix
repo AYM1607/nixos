@@ -2,8 +2,13 @@
   config,
   pkgs,
   pkgs-unstable,
+  user,
   ...
-} : {
+} :
+let
+  username = user.name;
+  homeDirectory = user.homeDirectory;
+in {
 
   imports = [
     ../../home-modules/default.nix
@@ -28,8 +33,8 @@
   };
 
   home = {
-    username = "jmug";
-    homeDirectory = "/Users/jmug";
+    username = username;
+    homeDirectory = homeDirectory;
 
     packages = with pkgs; [
       jq
@@ -67,24 +72,24 @@
     enable = true;
     extraConfig = ''
 Host *
-  IdentityAgent /Users/jmug/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+  IdentityAgent ${homeDirectory}/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
     '';
   };
 
   programs.zsh = {
     shellAliases = {
       # TODO BEGIN Interpolate the name of the host here.
-      flakeconf = "nvim /Users/jmug/nixos/flake.nix";
-      sysconf = "nvim /Users/jmug/nixos/hosts/macbook/configuration.nix";
-      homeconf = "nvim /Users/jmug/nixos/hosts/macbook/home.nix";
-      nvconf = "nvim /Users/jmug/nixos/home-modules/explicit-configs/nvim/init.lua";
+      flakeconf = "nvim ${homeDirectory}/nixos/flake.nix";
+      sysconf = "nvim ${homeDirectory}/nixos/hosts/macbook/configuration.nix";
+      homeconf = "nvim ${homeDirectory}/nixos/hosts/macbook/home.nix";
+      nvconf = "nvim ${homeDirectory}/nixos/home-modules/explicit-configs/nvim/init.lua";
       # TODO: Interpolate the name of the host here.
-      rshellconf="source /Users/jmug/.zshrc";
-      radev = "/Users/jmug/dev/aks-rp/bin/aksdev";
-      ksc = "KUBECONFIG=/Users/jmug/Downloads/cxkubeconfig.yaml kubectl";
-      kso = "KUBECONFIG=/Users/jmug/Downloads/overlaykubeconfig.yaml kubectl";
+      rshellconf="source ${homeDirectory}/.zshrc";
+      radev = "${homeDirectory}/dev/aks-rp/bin/aksdev";
+      ksc = "KUBECONFIG=${homeDirectory}/Downloads/cxkubeconfig.yaml kubectl";
+      kso = "KUBECONFIG=${homeDirectory}/Downloads/overlaykubeconfig.yaml kubectl";
       k = "kubectl";
-      nrsw = "sudo darwin-rebuild switch --flake /Users/jmug/nixos#msft-mac";
+      nrsw = "sudo darwin-rebuild switch --flake ${homeDirectory}/nixos#msft-mac";
     };
     initExtra = ''
     export GONOPROXY='github.com,golang.org,googlesource.com,opentelemetry.io,uber.org'

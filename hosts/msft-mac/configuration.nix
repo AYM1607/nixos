@@ -1,10 +1,13 @@
-{ self, pkgs, ... }: {
+{ self, pkgs, config, ... }: {
 
-  imports = [ ./hotkeys.nix ];
+  imports = [
+    ./hotkeys.nix
+    ../../modules/common
+  ];
 
   # To reflect hotkeys without a login cycle.
   system.activationScripts.postActivation.text = ''
-  sudo -u jmug /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  sudo -u ${config.user.name} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
   # List packages installed in system profile. To search by name, run:
@@ -14,7 +17,9 @@
     git-credential-manager
   ];
 
-  system.primaryUser = "jmug";
+  user.name = "jmug";
+
+  system.primaryUser = config.user.name;
 
   homebrew = {
     enable = true;
@@ -45,7 +50,7 @@
     nerd-fonts.bigblue-terminal
   ];
 
-  users.users.jmug.home = "/Users/jmug";
+  users.users.${config.user.name}.home = config.user.homeDirectory;
 
   nixpkgs.config.allowUnfree = true;
 
