@@ -1,12 +1,13 @@
-{ self, pkgs, ... }: {
+{ self, pkgs, config, ... }: {
 
   imports = [
     ./hotkeys.nix
+    ../../modules/common
   ];
 
   # To reflect hotkeys without a login cycle.
   system.activationScripts.postActivation.text = ''
-  sudo -u uagm /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+  sudo -u ${config.user.name} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
   # List packages installed in system profile. To search by name, run:
@@ -15,7 +16,9 @@
     neofetch
   ];
 
-  system.primaryUser = "uagm";
+  user.name = "jmug";
+
+  system.primaryUser = config.user.name;
 
   homebrew = {
     enable = true;
@@ -37,7 +40,7 @@
       "ghostty"
       "kicad"
       "secretive"
-      "gcc-arm-embedded"
+      "gcc-arm-embedded" # Maybe defer this to individual porject flakes.
       "karabiner-elements"
       "raycast"
       "logi-options+"
@@ -49,7 +52,7 @@
     nerd-fonts.bigblue-terminal
   ];
 
-  users.users.uagm.home = "/Users/uagm";
+  users.users.${config.user.name}.home = config.user.homeDirectory;
 
   nixpkgs.config.allowUnfree = true;
   
@@ -63,7 +66,7 @@
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 5;
+  system.stateVersion = 6;
 
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";

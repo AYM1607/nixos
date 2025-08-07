@@ -2,10 +2,16 @@
   config,
   pkgs,
   pkgs-unstable,
+  user,
   ...
-} : {
+} :
+let
+  username = user.name;
+  homeDirectory = user.homeDirectory;
+in {
   
   imports = [
+    ../../home-modules/default.nix
     ../../home-modules/direnv.nix
     ../../home-modules/ghostty-config.nix
     ../../home-modules/homebrew.nix
@@ -28,16 +34,14 @@
   };
 
   home = {
-    username = "uagm";
-    homeDirectory = "/Users/uagm";
+    username = username;
+    homeDirectory = homeDirectory;
 
     packages = with pkgs; [
-      fzf
-      ripgrep
+      nerd-fonts.bigblue-terminal
+      nerd-fonts.fira-code
       exercism
-      typescript-language-server
-      lua-language-server
-      starship
+      typescript-language-server # TODO: Defer to individual projects.
       audacity
       pkgs-unstable.claude-code
       (pkgs-unstable.litellm.overrideAttrs (oldAttrs: rec {
@@ -58,12 +62,11 @@
   programs.zsh = {
     shellAliases = {
       # TODO BEGIN Interpolate the name of the host here.
-      flakeconf = "nvim /Users/uagm/nixos/flake.nix";
-      sysconf = "nvim /Users/uagm/nixos/hosts/macbook/configuration.nix";
-      homeconf = "nvim /Users/uagm/nixos/hosts/macbook/home.nix";
-      nvconf = "nvim /Users/uagm/nixos/home-modules/explicit-configs/nvim/init.lua";
-      # TODO: Interpolate the name of the host here.
-      nrsw = "sudo darwin-rebuild switch --flake /Users/uagm/nixos#macbook";
+      flakeconf = "nvim ${homeDirectory}/nixos/flake.nix";
+      sysconf = "nvim ${homeDirectory}/nixos/hosts/macbook/configuration.nix";
+      homeconf = "nvim ${homeDirectory}/nixos/hosts/macbook/home.nix";
+      nvconf = "nvim ${homeDirectory}/nixos/home-modules/explicit-configs/nvim/init.lua";
+      nrsw = "sudo darwin-rebuild switch --flake ${homeDirectory}/nixos#macbook";
     };
   };
 }

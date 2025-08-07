@@ -141,14 +141,15 @@
         modules = [
           ./hosts/macbook/configuration.nix
           home-manager.darwinModules.home-manager
-          {
+          ({ config, ... }: {
             home-manager.extraSpecialArgs = {
               pkgs-unstable = pkgs-unstable_aarch64-darwin;
+              inherit (config) user;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.uagm.imports = [ ./hosts/macbook/home.nix ];
-          }
+          })
         ];
       };
       "msft-mac" = nix-darwin.lib.darwinSystem {
