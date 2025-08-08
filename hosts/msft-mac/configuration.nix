@@ -45,6 +45,7 @@
       "insta360-link-controller"
       "displaylink"
       "yubico-authenticator" # TODO: Defer to a module that manages yubikeys for darwin.
+      "docker-desktop"
     ];
   };
 
