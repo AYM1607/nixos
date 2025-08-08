@@ -1,8 +1,9 @@
 { self, pkgs, config, ... }: {
 
   imports = [
-    ./hotkeys.nix
+    ../common/darwin
     ../../modules/common
+    ./hotkeys.nix
   ];
 
   # To reflect hotkeys without a login cycle.
