@@ -11,10 +11,14 @@
   sudo -u ${config.user.name} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
+  # Popups for special characters for some keys.
+  system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+
   # List packages installed in system profile. To search by name, run:
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     neofetch
+    discord
   ];
 
   user.name = "jmug";
@@ -48,6 +52,9 @@
       "insta360-link-controller"
       "yubico-authenticator" # TODO: Defer to a module that manages yubikeys for darwin.
       "google-chrome"
+      "nrf-connect"
+      "segger-jlink"
+      "docker-desktop"
     ];
   };
 
