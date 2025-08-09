@@ -43,6 +43,7 @@ in {
     packages = with pkgs; [
       pkgs-unstable.cmake
       clang
+
       nerd-fonts.bigblue-terminal
       nerd-fonts.fira-code
       exercism
@@ -58,6 +59,8 @@ in {
           hash = "sha256-SGZwt2jzAQbOMlvudqPWat281su6OwT7JG2CNSMjL3A=";
         };
       }))
+      pkgs-unstable.vscode
+
       pkgs-unstable.go
       pkgs-unstable.bun
     ];
