@@ -75,6 +75,8 @@ in {
       sysconf = "nvim ${homeDirectory}/nixos/hosts/macbook/configuration.nix";
       homeconf = "nvim ${homeDirectory}/nixos/hosts/macbook/home.nix";
       nvconf = "nvim ${homeDirectory}/nixos/home-modules/explicit-configs/nvim/init.lua";
+
+      rshellconf = "source ${homeDirectory}/.zshrc";
       nrsw = "sudo darwin-rebuild switch --flake ${homeDirectory}/nixos#macbook";
       opencode = "/Users/jmug/dev/opencode/dist-local/bin/opencode"; # Replace with the app.
     };
