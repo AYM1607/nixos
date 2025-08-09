@@ -40,6 +40,8 @@ in {
     homeDirectory = homeDirectory;
 
     packages = with pkgs; [
+      pkgs-unstable.cmake
+      clang
       nerd-fonts.bigblue-terminal
       nerd-fonts.fira-code
       exercism

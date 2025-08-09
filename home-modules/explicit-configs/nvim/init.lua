@@ -18,6 +18,7 @@ require('lsp.sml-ls')
 require('lsp.arduino-ls')
 require('lsp.roc-ls')
 require('lsp.zls-ls')
+require('lsp.clang-ls')
 
 -- Completion
 require('completion')
