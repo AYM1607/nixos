@@ -22,6 +22,7 @@ in {
     ../../home-modules/secretive.nix
     ../../home-modules/starship.nix
     ../../home-modules/tmux.nix
+    ../../home-modules/opencode-config.nix
     ../../home-modules/zsh.nix
   ];
 
@@ -57,7 +58,8 @@ in {
           hash = "sha256-SGZwt2jzAQbOMlvudqPWat281su6OwT7JG2CNSMjL3A=";
         };
       }))
-      pkgs-unstable.opencode
+      pkgs-unstable.go
+      pkgs-unstable.bun
     ];
 
     stateVersion = "24.11";
@@ -71,6 +73,7 @@ in {
       homeconf = "nvim ${homeDirectory}/nixos/hosts/macbook/home.nix";
       nvconf = "nvim ${homeDirectory}/nixos/home-modules/explicit-configs/nvim/init.lua";
       nrsw = "sudo darwin-rebuild switch --flake ${homeDirectory}/nixos#macbook";
+      opencode = "/Users/jmug/dev/opencode/dist-local/bin/opencode"; # Replace with the app.
     };
   };
 }
