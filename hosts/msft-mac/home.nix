@@ -92,6 +92,7 @@ in {
     export GOPROXY='https://goproxyprod.goms.io'
     export PATH=$PATH:$HOME/bin
     export PATH=$PATH:$HOME/go/bin
+    export PATH=$PATH:$HOME/.opencode/bin
     export __AKS_DOCKER_BUILD_MOUNT_NETRC=1
     '';
   };
