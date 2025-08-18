@@ -5,12 +5,12 @@
       "$schema": "https://opencode.ai/config.json",
       "permission": {
         "edit": "ask",
+        "webfetch": "ask",
         "bash": {
           "git status": "allow",
           "git diff": "allow",
           "ls": "allow",
-          "pwd": "allow",
-          "*": "ask"
+          "pwd": "allow"
         }
       }
     }
