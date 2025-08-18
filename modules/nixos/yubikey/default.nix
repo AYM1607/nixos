@@ -1,4 +1,48 @@
 # This module supports multiple YubiKey 4 and/or 5 devices as well as a single Yubico Security Key device. The limitation to a single Security Key is because they do not have serial numbers and therefore the scripts in this module cannot uniquely identify them. See options.yubikey.identifies.description below for information on how to add a 'mock' serial number for a single Security key. Additional context is available in Issue 14 https://github.com/EmergentMind/nix-config/issues/14
+#
+# LINUX ONLY: This module uses udev rules for hotplug detection which are not available on macOS.
+# For Darwin/macOS YubiKey support, consider these alternatives:
+#
+# 1. Launch Agents (Recommended):
+#    - Use nix-darwin's launchd.agents with StartInterval for polling
+#    - Monitor via `system_profiler SPUSBDataType | grep Yubico`
+#    - More reliable than manual scripts, integrates with macOS services
+#
+#    Example implementation:
+#    launchd.agents.yubikey-monitor = {
+#      enable = true;
+#      config = {
+#        ProgramArguments = [
+#          "${pkgs.bash}/bin/bash"
+#          "-c"
+#          "system_profiler SPUSBDataType | grep -q 'Yubico' && ${yubikey-up}/bin/yubikey-up || ${yubikey-down}/bin/yubikey-down"
+#        ];
+#        StartInterval = 5; # Check every 5 seconds
+#        RunAtLoad = true;
+#      };
+#    };
+#
+# 2. IOKit Notifications (Advanced):
+#    - Write daemon using IOKit's IOServiceAddMatchingNotification
+#    - Monitors USB device attach/detach events directly
+#    - Requires C/Swift code or Python with pyobjc
+#    - Most responsive but significantly more complex
+#
+# 3. Hybrid Approach:
+#    - Launch Agent for background monitoring
+#    - Manual shell aliases/functions for immediate response  
+#    - Login hooks via system.activationScripts.postUserActivation
+#
+#    Example login hook:
+#    system.activationScripts.postUserActivation.text = ''
+#      # Run yubikey detection on login
+#      if command -v ykman >/dev/null 2>&1; then
+#        ${yubikey-up}/bin/yubikey-up || true
+#      fi
+#    '';
+#
+# The Darwin configs currently only install yubico-authenticator via Homebrew
+# and lack the automatic SSH key management provided by this Linux module.
 {
   config,
   pkgs,
