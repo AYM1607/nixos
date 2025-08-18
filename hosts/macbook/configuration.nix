@@ -11,6 +11,8 @@
   sudo -u ${config.user.name} /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
   '';
 
+  power.sleep.display = 10;
+
   # Popups for special characters for some keys.
   system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
 
