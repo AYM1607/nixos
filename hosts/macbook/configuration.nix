@@ -39,9 +39,9 @@
       no_quarantine = true;
     };
 
-    taps = [];
     brews = [
       "raylib"
+      "watchman"
     ];
     casks = [
       "ghostty"
@@ -57,6 +57,7 @@
       "nrf-connect"
       "segger-jlink"
       "docker-desktop"
+      "whatsapp"
     ];
   };
 
