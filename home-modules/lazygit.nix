@@ -2,7 +2,7 @@
   programs.lazygit = {
     enable = true;
     settings = {
-      git.commit.signOff = true;
+      # git.commit.signOff = true;
       git.autoFetch = false;
       git.autoRefresh = false;
       keybinding = {
