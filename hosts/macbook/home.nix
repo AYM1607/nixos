@@ -62,7 +62,12 @@ in {
       pkgs-unstable.vscode
 
       pkgs-unstable.go
+      pkgs-unstable.gopls
+      pkgs-unstable.gotools
       pkgs-unstable.bun
+      # Expo.
+      pkgs-unstable.nodejs_24
+      pkgs-unstable.eas-cli
     ];
 
     stateVersion = "24.11";
