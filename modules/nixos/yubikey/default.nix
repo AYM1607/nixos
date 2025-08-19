@@ -50,8 +50,7 @@
   ...
 }:
 let
-  # homeDirectory = "${config.hostSpec.home}";
-  homeDirectory = "/home/jmug"; # Should be parametric.
+  homeDirectory = config.user.homeDirectory;
   yubikey-up =
     let
       yubikeyIds = lib.concatStringsSep " " (

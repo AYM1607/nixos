@@ -83,7 +83,7 @@ in {
 
       rshellconf = "source ${homeDirectory}/.zshrc";
       nrsw = "sudo darwin-rebuild switch --flake ${homeDirectory}/nixos#macbook";
-      opencode-local = "/Users/jmug/dev/opencode/dist-local/bin/opencode"; # Replace with the app.
+      opencode-local = "${homeDirectory}/dev/opencode/dist-local/bin/opencode";
     };
 
     initContent = ''
