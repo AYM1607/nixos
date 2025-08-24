@@ -43,6 +43,11 @@
     ssh-agent-switcher = {
       url = "github:AYM1607/ssh-agent-switcher/6cd7ce973cf08656d42e475945216d8c0f0b0c7b";
     };
+
+    opencode-tunneler = {
+      url = "github:AYM1607/opencode-tunneler";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";  # Use same nixpkgs
+    };
   };
 
   outputs = {
@@ -57,6 +62,7 @@
     ghostty,
     nixgl,
     ssh-agent-switcher,
+    opencode-tunneler,
     ...
   }@inputs: {
     nixosConfigurations = {
@@ -145,6 +151,7 @@
             home-manager.extraSpecialArgs = {
               pkgs-unstable = pkgs-unstable_aarch64-darwin;
               inherit (config) user;
+              inherit opencode-tunneler;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;

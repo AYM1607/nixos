@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgs-unstable,
+  opencode-tunneler,
   user,
   ...
 } :
@@ -60,6 +61,7 @@ in {
         };
       }))
       pkgs-unstable.vscode
+      pkgs-unstable.ngrok
 
       pkgs-unstable.go
       pkgs-unstable.gopls
@@ -68,6 +70,8 @@ in {
       # Expo.
       pkgs-unstable.nodejs_24
       pkgs-unstable.eas-cli
+
+      opencode-tunneler.packages.aarch64-darwin.default
     ];
 
     stateVersion = "24.11";
