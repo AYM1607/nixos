@@ -46,6 +46,7 @@
       "displaylink"
       "yubico-authenticator" # TODO: Defer to a module that manages yubikeys for darwin.
       "docker-desktop"
+      "spotify"
     ];
   };
 
