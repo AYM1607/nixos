@@ -394,11 +394,11 @@
         "systems": "systems_2"
       },
       "locked": {
-        "lastModified": 1756017009,
-        "narHash": "sha256-93UEbdl3XqilBp2wI09XDv4lLT135eawBRb41aObwLI=",
+        "lastModified": 1756018859,
+        "narHash": "sha256-ruN+gL4Nx8fMiSj+Yf0WD/6H+DjIkT7mg1U0bS+lZfM=",
         "owner": "AYM1607",
         "repo": "opencode-tunneler",
-        "rev": "9c91f30ecf4a610bc4e48dc221c000dc1f3297f7",
+        "rev": "f0d83750f68c492e7f02b32cf6db1cda498db642",
         "type": "github"
       },
       "original": {
