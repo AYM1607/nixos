@@ -45,10 +45,10 @@ in {
       nerd-fonts.fira-code
       azure-cli
 
-      go
-      gopls
-      gotools
-      mockgen
+      pkgs-unstable.go
+      pkgs-unstable.gopls
+      pkgs-unstable.gotools
+      pkgs-unstable.mockgen
       pkgs-unstable.kubernetes-controller-tools
       pkgs-unstable.kubectl
       pkgs-unstable.kubectl-node-shell
