@@ -42,6 +42,7 @@
     brews = [
       "raylib"
       "watchman"
+      "vite"
     ];
     casks = [
       "ghostty"
@@ -58,6 +59,7 @@
       "segger-jlink"
       "docker-desktop"
       "whatsapp"
+      "slack"
     ];
   };
 
