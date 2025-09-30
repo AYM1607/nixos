@@ -11,9 +11,6 @@
     # Required for webcord.
     nixpkgs-electron-32.url = "github:NixOS/nixpkgs/782740762fb281404740b6b7084d356c3dab1173";
 
-    # required to match on a specific version of Go for AKS dev setup.
-    nixpkgs-msft-go.url = "github:NixOS/nixpkgs/5ed627539ac84809c78b2dd6d26a5cebeb5ae269";
-
     nixgl.url = "github:nix-community/nixGL";
     nixgl.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -54,7 +51,6 @@
     self,
     nixpkgs,
     nixpkgs-unstable,
-    nixpkgs-msft-go,
     nix-darwin,
     apple-silicon,
     nixos-hardware,
@@ -159,25 +155,6 @@
           })
         ];
       };
-      "msft-mac" = nix-darwin.lib.darwinSystem {
-        system = "aarch64-darwin";
-        specialArgs = {
-          inherit inputs ghostty self;
-        };
-        modules = [
-          ./hosts/msft-mac/configuration.nix
-          home-manager.darwinModules.home-manager
-          ({ config, ... }: {
-            home-manager.extraSpecialArgs = {
-              pkgs-unstable = pkgs-unstable_aarch64-darwin;
-              inherit (config) user;
-            };
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.jmug.imports = [ ./hosts/msft-mac/home.nix ];
-          })
-        ];
-      };
     };
 
     homeConfigurations = let
@@ -192,27 +169,6 @@
         pkgs = nixpkgs.legacyPackages."aarch64-linux";
         modules = [
           ./users/alarm/home.nix
-        ];
-      };
-      msftdevbox = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = {
-          pkgs-msft-go = nixpkgs-msft-go.legacyPackages."x86_64-linux";
-          pkgs-unstable = pkgs-unstable_x86_64-linux;
-        };
-        modules = [
-          ./users/msftdevbox/home.nix
-        ];
-      };
-      nixlapmsft = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages."x86_64-linux";
-        extraSpecialArgs = {
-          inherit ghostty nixgl;
-          pkgs-msft-go = nixpkgs-msft-go.legacyPackages."x86_64-linux";
-          pkgs-unstable = pkgs-unstable_x86_64-linux;
-        };
-        modules = [
-          ./users/nixlapmsft/home.nix
         ];
       };
     };
