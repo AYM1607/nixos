@@ -20,7 +20,6 @@
   # $ nix-env -qaP | grep wget
   environment.systemPackages = with pkgs; [
     neofetch
-    discord
   ];
 
   user.name = "jmug";
@@ -43,6 +42,8 @@
       "raylib"
       "watchman"
       "vite"
+      "pipx"
+      "codex"
     ];
     casks = [
       "ghostty"
@@ -60,6 +61,7 @@
       "docker-desktop"
       "whatsapp"
       "slack"
+      "discord"
     ];
   };
 
