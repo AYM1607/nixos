@@ -62,6 +62,7 @@
       "whatsapp"
       "slack"
       "discord"
+      "claude-code"
     ];
   };
 

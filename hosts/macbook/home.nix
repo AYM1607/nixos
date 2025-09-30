@@ -50,7 +50,6 @@ in {
       exercism
       typescript-language-server # TODO: Defer to individual projects.
       audacity
-      pkgs-unstable.claude-code
       (pkgs-unstable.litellm.overrideAttrs (oldAttrs: rec {
         version = "1.74.9";
         src = pkgs.fetchFromGitHub {
