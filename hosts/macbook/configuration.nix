@@ -44,6 +44,10 @@
       "vite"
       "pipx"
       "codex"
+      "python@3.11"
+      "glow"
+      "act"
+      "chromaprint"
     ];
     casks = [
       "ghostty"
@@ -63,6 +67,8 @@
       "slack"
       "discord"
       "claude-code"
+      "calibre"
+      "rsyncui"
     ];
   };
 

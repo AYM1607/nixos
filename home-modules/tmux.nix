@@ -57,11 +57,13 @@
       bind w kill-pane
       bind W kill-window
 
+      # I'd rather have the session
+      # list functionality, don't use sync much.
       # Pane sync
-      unbind s
-      unbind S
-      bind s setw synchronize-panes on
-      bind S setw synchronize-panes off
+      # unbind s
+      # unbind S
+      # bind s setw synchronize-panes on
+      # bind S setw synchronize-panes off
     '';
     plugins = with pkgs; [
       {

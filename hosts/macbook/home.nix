@@ -3,6 +3,7 @@
   pkgs,
   pkgs-unstable,
   opencode-tunneler,
+  godig,
   user,
   ...
 } :
@@ -61,19 +62,34 @@ in {
       }))
       pkgs-unstable.vscode
       pkgs-unstable.ngrok
+      pkgs-unstable.flyctl
+      pkgs-unstable.awscli2
+      pkgs-unstable.google-cloud-sdk
 
       pkgs-unstable.go
       pkgs-unstable.gopls
       pkgs-unstable.gotools
       pkgs-unstable.bun
+      pkgs-unstable.rustup
       # Expo.
       pkgs-unstable.nodejs_24
       pkgs-unstable.eas-cli
 
       opencode-tunneler.packages.aarch64-darwin.default
+      godig.packages.aarch64-darwin.service
     ];
 
     stateVersion = "24.11";
+  };
+
+  programs.ssh = {
+    matchBlocks = {
+      media = {
+        user = "jmug";
+        hostname = "192.168.8.241";
+        forwardAgent = true;
+      };
+    };
   };
 
   programs.zsh = {

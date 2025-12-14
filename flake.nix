@@ -45,6 +45,11 @@
       url = "github:AYM1607/opencode-tunneler";
       inputs.nixpkgs.follows = "nixpkgs-unstable";  # Use same nixpkgs
     };
+
+    godig = {
+      url = "github:AYM1607/godig/v0.2.0";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";  # Use same nixpkgs
+    };
   };
 
   outputs = {
@@ -59,6 +64,7 @@
     nixgl,
     ssh-agent-switcher,
     opencode-tunneler,
+    godig,
     ...
   }@inputs: {
     nixosConfigurations = {
@@ -148,6 +154,7 @@
               pkgs-unstable = pkgs-unstable_aarch64-darwin;
               inherit (config) user;
               inherit opencode-tunneler;
+              inherit godig;
             };
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
