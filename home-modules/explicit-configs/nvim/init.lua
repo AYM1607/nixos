@@ -13,12 +13,9 @@ require('lsp.typescript-ls')
 require('lsp.python-ls')
 require('lsp.lua-ls')
 require('lsp.go-ls')
-require('lsp.ocaml-ls')
-require('lsp.sml-ls')
-require('lsp.arduino-ls')
-require('lsp.roc-ls')
 require('lsp.zls-ls')
 require('lsp.clang-ls')
+require('lsp.rust-analyzer')
 
 -- Completion
 require('completion')
