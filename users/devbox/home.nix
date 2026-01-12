@@ -12,6 +12,11 @@
     ../../home-modules/tmux.nix
   ];
 
+  nvim = {
+    enable = true;
+    package = pkgs-unstable.neovim;
+  };
+
   home = {
     username = "jmug";
     homeDirectory = "/home/jmug";

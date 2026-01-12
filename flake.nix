@@ -181,6 +181,9 @@
       # For machines that don't run NixOS.
       devbox = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages."x86_64-linux";
+        extraSpecialArgs = {
+          pkgs-unstable = pkgs-unstable_x86_64-linux;
+        };
         modules = [
           ./users/devbox/home.nix
         ];
