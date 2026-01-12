@@ -1,6 +1,8 @@
-{ pkgs, ... } :
-
 {
+  pkgs,
+  pkgs-unstable,
+  ...
+} : {
   imports = [
     ../../home-modules/default.nix
     ../../home-modules/nvim.nix
