@@ -24,7 +24,7 @@ require('nv-prettier')
 
 require('nv-telescope')
 
-require('langs.roc')
+-- require('langs.roc')
 
 -- Set up keymaps after everything is configured.
 require('keymappings')
