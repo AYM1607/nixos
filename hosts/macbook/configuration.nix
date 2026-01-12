@@ -48,6 +48,7 @@
       "glow"
       "act"
       "chromaprint"
+      "libiconv"
     ];
     casks = [
       "ghostty"
