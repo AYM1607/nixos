@@ -184,7 +184,7 @@
         modules = [
           ./users/devbox/home.nix
         ];
-      }
+      };
     };
   };
 }
