@@ -56,7 +56,6 @@
       "gcc-arm-embedded" # Maybe defer this to individual porject flakes.
       "karabiner-elements"
       "raycast"
-      "logi-options+"
       "insta360-link-controller"
       "yubico-authenticator" # TODO: Defer to a module that manages yubikeys for darwin.
       "google-chrome"
