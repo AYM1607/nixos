@@ -1,14 +1,10 @@
 keys:
   - &jmug age1psyctjy329r9v07uqu72vkjl06f26f0epvh6zxejdkwp3m0tnyvq88rnr4 # This key is in cold storage.
   - &hosts:
-    - &nixlap age1cfcfye2unv89fgyuwpvy9sas40jd87kksw7rlgy4cwmcfjqntv2st2jcnp
-    - &asahi age1y2kfnx87z2j7te9hu0guderrf2x9m8d0f3gfjjxcdk2va77yj3hsngj2f5
-    - &devbox age1208zkkd9hh8n6v9zn6w75x9ajxd798kc4cv53d6qhkx55juflumquyh3ge
+    - &nixbox age1nhlguc8xf7m4sdn087vqcnc9uj3n4zv09l9043u395acrd3lrscq9fzv66
 creation_rules:
   - path_regex: secrets.yaml$
     key_groups:
     - age:
       - *jmug
-      - *nixlap
-      - *asahi
-      - *devbox
+      - *nixbox

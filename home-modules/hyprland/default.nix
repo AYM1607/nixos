@@ -10,6 +10,7 @@
   # Screenshots.
   home.packages = with pkgs; [
     hyprshot
+    hyprlauncher
   ];
   # Notifications daemon.
   services.swaync.enable = true;
@@ -18,13 +19,13 @@
   wayland.windowManager.hyprland.settings = {
     monitor = [
       ",preferred,auto,auto"
-      "HDMI-A-1,preferred,auto,1.333333"
+      "HDMI-A-1,3840x2160@60.00Hz,auto,1.3333"
       "eDP-1,preferred,auto,1.6"
     ];
 
     "$terminal" = "ghostty";
     "$fileManager" = "dolphin"; # TODO: Change.
-    "$menu" = "GSK_RENDERER=ngl walker";
+    "$menu" = "hyprlauncher";
 
     env = [
       "XCURSOR_SIZE,24"
@@ -118,11 +119,11 @@
       };
     };
 
-    gestures = {
-      workspace_swipe = true;
-      workspace_swipe_fingers = 3;
-      workspace_swipe_distance = 150;
-    };
+    # gestures = {
+    #   workspace_swipe = true;
+    #   workspace_swipe_fingers = 3;
+    #   workspace_swipe_distance = 150;
+    # };
 
     "$mainMod" = "SUPER"; # Sets "Windows" key as main modifier
 
@@ -177,7 +178,7 @@
       "$mainMod, mouse_up, workspace, e-1"
 
       # App launcher
-      "$mainMod, space, exec, $menu"
+      "$mainMod, space, exec, pkil $menu || $menu"
     ];
 
     bindm = [

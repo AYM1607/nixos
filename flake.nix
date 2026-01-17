@@ -129,6 +129,27 @@
           }
         ];
       };
+      nixbox = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs ghostty;
+        };
+        modules = [
+          ./hosts/nixbox/configuration.nix
+          home-manager.nixosModules.home-manager
+          ({config, ...}: {
+            home-manager.extraSpecialArgs = {
+              inherit inputs;
+              inherit ssh-agent-switcher;
+              inherit (config) user;
+            };
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.jmug = import ./hosts/nixbox/home.nix;
+            # home-manager.users.root = import ./hosts/devbox/home-root.nix;
+          })
+        ];
+      };
     };
 
     # Build darwin flake using:

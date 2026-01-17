@@ -1,4 +1,5 @@
-{ lib,
+{
+  lib,
   inputs,
   config,
   pkgs,
@@ -23,7 +24,7 @@ in {
   imports = [
     ../../home-modules/hyprland
 
-    ../../home-modules/default.nix
+    ../../home-modules
     ../../home-modules/direnv.nix
     ../../home-modules/ghostty-config.nix
     ../../home-modules/git.nix
@@ -36,8 +37,14 @@ in {
     ../../home-modules/zsh.nix
   ];
 
-  ghostty.font-size = "16";
-  ghostty.window-decoration = false;
+  # Custom options for my packages.
+  nvim = {
+    enable = true;
+  };
+  ghostty = {
+    font-size = "14";
+    window-decoration = false;
+  };
 
   home = {
     username = username;
@@ -47,6 +54,7 @@ in {
       # Media
       loupe
       vlc
+      bluetui
       # Audio
       wireplumber
       spotify-player
@@ -54,22 +62,20 @@ in {
       age
       sops
       # Browsers
-      ungoogled-chromium
+      firefox
       # Coms
       discord
-      whatsie
       obs-studio
 
       # AWS tools
-      awscli2
-      (callPackage ../../nixos-modules/shell-apps/aws-cli-mfa.nix {})
+      # awscli2
+      # (callPackage ../../nixos-modules/shell-apps/aws-cli-mfa.nix {})
 
       # Misc
-      zig
-      neofetch
+      # zig
+      fastfetch
       fzf
       ripgrep
-      htop
       git
       wget
       exercism
@@ -85,17 +91,17 @@ in {
       package = pkgs."posy-cursors";
     };
 
-    stateVersion = "25.05";
+    stateVersion = "25.11";
   };
 
-  home.activation.aws-cli-mfa-config = lib.hm.dag.entryAfter ["writeBoundary"] ''
-    mkdir -p ~/.config/aws-cli-mfa
-    cat > ~/.config/aws-cli-mfa/config.yaml << EOF
-mfa_serial: $(cat ${config.sops.secrets."aws/jmug_matcha_mfa_serial".path})
-role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
-session_duration: 43200
-EOF
-  '';
+  # home.activation.aws-cli-mfa-config = lib.hm.dag.entryAfter ["writeBoundary"] ''
+  #   mkdir -p ~/.config/aws-cli-mfa
+  #   cat > ~/.config/aws-cli-mfa/config.yaml << EOF
+# mfa_serial: $(cat ${config.sops.secrets."aws/jmug_matcha_mfa_serial".path})
+# role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
+# session_duration: 43200
+# EOF
+  # '';
 
   programs.zsh = {
     shellAliases = {
@@ -107,10 +113,10 @@ EOF
       # TODO END Interpolate the name of the host here.
       rshellconf = "source ~/.zshrc";
       # TODO: Interpolate the name of the host here.
-      nrsw = "sudo nixos-rebuild switch --flake /home/jmug/nixos#devbox";
+      nrsw = "sudo nixos-rebuild switch --flake ${homeDirectory}/nixos#nixbox";
       fly = "flyctl";
-      awsmfa = "eval $(aws-cli-mfa)";
-      uawsmfa = "eval $(aws-cli-mfa --unset)";
+      # awsmfa = "eval $(aws-cli-mfa)";
+      # uawsmfa = "eval $(aws-cli-mfa --unset)";
     };
     loginExtra = ''
     if [ ! -e "/tmp/ssh-agent.''${USER}" ]; then
@@ -148,19 +154,6 @@ EOF
       };
     };
     # matchBlocks = {
-    #   alarm = {
-    #     user = "alarm";
-    #     hostname = "alarm";
-    #     forwardAgent = true;
-    #     identityFile = "/home/jmug/.ssh/id_ed25519";
-    #   };
-    #   wsl = {
-    #     user = "aym";
-    #     hostname = "192.168.10.241";
-    #     port = 69;
-    #     forwardAgent = true;
-    #     identityFile = "/home/jmug/.ssh/id_ed25519";
-    #   };
     #   ws = {
     #     user = "aym";
     #     hostname = "73.118.150.68";
