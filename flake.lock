@@ -456,7 +456,8 @@
         "opencode-tunneler": "opencode-tunneler",
         "sops-nix": "sops-nix",
         "ssh-agent-switcher": "ssh-agent-switcher",
-        "walker": "walker"
+        "walker": "walker",
+        "zen-browser": "zen-browser"
       }
     },
     "sops-nix": {
@@ -606,6 +607,29 @@
         "owner": "abenz1267",
         "ref": "v0.12.23",
         "repo": "walker",
+        "type": "github"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "home-manager": [
+          "home-manager"
+        ],
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1768711359,
+        "narHash": "sha256-3n2ixvAMWij1ZOh/KMJJqizX+sRU083wFR8pa6+IkyU=",
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
+        "rev": "8c9e9425946f290fa60e0e6fd7b1464cbcdbc53e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "0xc000022070",
+        "repo": "zen-browser-flake",
         "type": "github"
       }
     },

@@ -35,6 +35,8 @@ in {
     ../../home-modules/starship.nix
     ../../home-modules/tmux.nix
     ../../home-modules/zsh.nix
+
+    inputs.zen-browser.homeModules.beta
   ];
 
   # Custom options for my packages.
@@ -45,6 +47,7 @@ in {
     font-size = "14";
     window-decoration = false;
   };
+  programs.zen-browser.enable = true;
 
   home = {
     username = username;
