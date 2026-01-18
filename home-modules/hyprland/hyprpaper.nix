@@ -2,8 +2,8 @@
   services.hyprpaper = {
     enable = true;
     settings = {
-      preload = ["/home/jmug/Wallpapers/nyc2.jpg"];
-      wallpaper = [", /home/jmug/Wallpapers/nyc2.jpg"];
+      preload = ["/home/jmug/Wallpapers/OrangeIcons.png"];
+      wallpaper = [", /home/jmug/Wallpapers/OrangeIcons.png"];
       ipc = true;
     };
   };
