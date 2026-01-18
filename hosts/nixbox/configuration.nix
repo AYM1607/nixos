@@ -102,6 +102,7 @@ in
     hyprlock
     # Idling
     sway-audio-idle-inhibit
+    logiops
   ];
   environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
   fonts = {
@@ -111,6 +112,84 @@ in
       nerd-fonts.fira-code
       nerd-fonts.caskaydia-cove
     ];
+  };
+
+  # Logiops daemon
+  systemd.packages = [ pkgs.logiops ];
+  systemd.services.logid.wantedBy = [ "multi-user.target" ];
+  environment.etc = {
+    "logid.cfg" = {
+      # For some reason scroll inversion does not work for the mx vertical...
+      text = ''
+        devices: (
+          {
+            name: "Wireless Mouse MX Master 3";
+
+            hiresscroll: {
+            };
+
+            thumbwheel: {
+              invert: true;
+            };
+
+            buttons: (
+                  {
+                      cid: 0x53;
+                      action =
+                      {
+                          type :  "Keypress";
+                          keys: ["KEY_LEFTMETA", "KEY_LEFT"];
+                      };
+                  },
+                  {
+                      cid: 0x56;
+                      action =
+                      {
+                          type :  "Keypress";
+                          keys: ["KEY_LEFTMETA", "KEY_RIGHT"];
+                      };
+                  }
+              );
+          },
+          {
+            name: "MX Vertical Advanced Ergonomic Mouse";
+
+            hiresscroll: {
+              hires: true;
+              invert: false;
+              target: false;
+            };
+
+            buttons: (
+                  {
+                      cid: 0x53;
+                      action =
+                      {
+                          type :  "Keypress";
+                          keys: ["KEY_LEFTMETA", "KEY_PAGEUP"];
+                      };
+                  },
+                  {
+                      cid: 0x56;
+                      action =
+                      {
+                          type :  "Keypress";
+                          keys: ["KEY_LEFTMETA", "KEY_PAGEDOWN"];
+                      };
+                  },
+                  {
+                      cid: 0xfd;
+                      action =
+                      {
+                          type : "Keypress";
+                          keys: ["KEY_LEFTMETA"];
+                      };
+                  }
+           );
+          }
+        );
+      '';
+    };
   };
 
   security.pam.services.hyprlock = {};
