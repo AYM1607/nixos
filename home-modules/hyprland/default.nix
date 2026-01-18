@@ -5,12 +5,12 @@
     ./hypridle.nix
     ./walker.nix
     ./waybar.nix
+    ./fuzzel.nix
   ];
 
   # Screenshots.
   home.packages = with pkgs; [
     hyprshot
-    hyprlauncher
   ];
   # Notifications daemon.
   services.swaync.enable = true;
@@ -25,7 +25,7 @@
 
     "$terminal" = "ghostty";
     "$fileManager" = "dolphin"; # TODO: Change.
-    "$menu" = "hyprlauncher";
+    "$menu" = "fuzzel";
 
     env = [
       "XCURSOR_SIZE,24"
@@ -180,7 +180,7 @@
       "$mainMod, mouse_up, workspace, e-1"
 
       # App launcher
-      "$mainMod, space, exec, pkil $menu || $menu"
+      "$mainMod, space, exec, pkil fuzzel || fuzzel"
     ];
 
     bindm = [
