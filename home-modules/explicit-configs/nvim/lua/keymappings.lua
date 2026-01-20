@@ -8,21 +8,21 @@ vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true}
 vim.g.mapleader = ' '
 
 -- Exit insert mode with ,h.
-vim.api.nvim_set_keymap('i', ',h', '<ESC>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('i', ',m', '<ESC>', {noremap = true, silent = true})
 
 -- Remap for colemak-dhm.
 -- Left.
-vim.api.nvim_set_keymap('', 'm', 'h', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('', 'h', 'm', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'm', 'h', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'h', 'm', {noremap = true, silent = true})
 -- Down.
-vim.api.nvim_set_keymap('', 'j', 'n', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('', 'n', 'j', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'j', 'n', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'n', 'j', {noremap = true, silent = true})
 -- Up.
-vim.api.nvim_set_keymap('', 'k', 'e', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('', 'e', 'k', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'k', 'e', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'e', 'k', {noremap = true, silent = true})
 -- Right.
-vim.api.nvim_set_keymap('', 'l', 'i', {noremap = true, silent = true})
-vim.api.nvim_set_keymap('', 'i', 'l', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'l', 'i', {noremap = true, silent = true})
+-- vim.api.nvim_set_keymap('', 'i', 'l', {noremap = true, silent = true})
 
 -- C-g as ESC
 vim.api.nvim_set_keymap('n', '<C-g>', '<ESC>', {silent = true})
@@ -39,10 +39,10 @@ vim.api.nvim_set_keymap('t', '<C-g>', '<ESC>', {silent = true})
 vim.api.nvim_set_keymap("i", '<C-l>', '<Right>', {noremap = true, silent = true})
 
 -- Leader window movement.
-vim.api.nvim_set_keymap("n", '<Leader>wm', '<C-w>h', {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", '<Leader>wn', '<C-w>j', {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", '<Leader>we', '<C-w>k', {noremap = true, silent = true})
-vim.api.nvim_set_keymap("n", '<Leader>wi', '<C-w>l', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", '<Leader>wh', '<C-w>h', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", '<Leader>wj', '<C-w>j', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", '<Leader>wk', '<C-w>k', {noremap = true, silent = true})
+vim.api.nvim_set_keymap("n", '<Leader>wl', '<C-w>l', {noremap = true, silent = true})
 
 -- Quick save.
 vim.api.nvim_set_keymap('n', '<Leader>fw', ':w<CR>', {silent = true})

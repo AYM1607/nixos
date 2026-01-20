@@ -88,11 +88,13 @@ in
     # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
     curl
+    chromium
     # Misc utils
     ripgrep
     fzf
     unzip
     nautilus
+    keyd
     # Terminal
     ghostty.packages.x86_64-linux.default
     kitty
@@ -189,6 +191,19 @@ in
           }
         );
       '';
+    };
+  };
+
+  services.keyd = {
+    enable = true;
+    keyboards.colemakdhm = {
+      ids = [ "320f:5088:37b39d24" ];
+      settings = {
+        main = {
+          capslock = "leftcontrol";
+          leftcontrol = "capslock";
+        };
+      };
     };
   };
 

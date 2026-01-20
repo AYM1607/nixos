@@ -18,9 +18,9 @@
   wayland.windowManager.hyprland.enable = true;
   wayland.windowManager.hyprland.settings = {
     monitor = [
-      ",preferred,auto,auto"
       "HDMI-A-1,3840x2160@60.00Hz,auto,1.3333"
       "eDP-1,preferred,auto,1.6"
+      "FALLBACK,1920x1080@60,auto,1"
     ];
 
     "$terminal" = "ghostty";

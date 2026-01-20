@@ -42,16 +42,16 @@
       bind -r f next-window
 
       # Movement
-      bind -r e select-pane -U
-      bind -r n select-pane -D
-      bind -r m select-pane -L
-      bind -r i select-pane -R
+      bind -r k select-pane -U
+      bind -r j select-pane -D
+      bind -r h select-pane -L
+      bind -r l select-pane -R
 
       # Resizing this will not work with colemak keymaps.
-      bind -r C-j resize-pane -D 15
-      bind -r C-k resize-pane -U 15
-      bind -r C-h resize-pane -L 15
-      bind -r C-l resize-pane -R 15
+      # bind -r C-j resize-pane -D 15
+      # bind -r C-k resize-pane -U 15
+      # bind -r C-h resize-pane -L 15
+      # bind -r C-l resize-pane -R 15
 
       # Kill panes and windows
       bind w kill-pane

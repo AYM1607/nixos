@@ -68,11 +68,15 @@ in {
       firefox
       # Coms
       discord
+      slack
       obs-studio
 
       # AWS tools
       # awscli2
       # (callPackage ../../nixos-modules/shell-apps/aws-cli-mfa.nix {})
+
+      # Minecraft
+      prismlauncher
 
       # Misc
       # zig

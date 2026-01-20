@@ -7,10 +7,10 @@
       git.autoRefresh = false;
       keybinding = {
         universal = {
-          prevItem-alt = "e";
-          nextItem-alt = "n";
-          prevBlock-alt = "m";
-          nextBlock-alt = "i";
+          # prevItem-alt = "e";
+          # nextItem-alt = "n";
+          # prevBlock-alt = "m";
+          # nextBlock-alt = "i";
           nextMatch = "@";
           prevMatch = "#";
           new = "+";
