@@ -105,6 +105,9 @@ in
     # Idling
     sway-audio-idle-inhibit
     logiops
+    # networking.
+    tailscale
+    tailscale-systray
   ];
   environment.pathsToLink = [ "/share/applications" "/share/xdg-desktop-portal" ];
   fonts = {
@@ -206,6 +209,8 @@ in
       };
     };
   };
+
+  services.tailscale.enable = true;
 
   security.pam.services.hyprlock = {};
   programs.hyprland = {

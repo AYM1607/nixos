@@ -10,6 +10,7 @@
 
   # Screenshots.
   home.packages = with pkgs; [
+    wl-clipboard
     hyprshot
   ];
   # Notifications daemon.
@@ -34,6 +35,8 @@
 
     exec-once = [
       "sway-audio-idle-inhibit" # TODO: Check if it can be conditional on the package existing.
+      # TODO: This should be hidden under an option.
+      "tailscale-systray"
     ];
 
     general = {
@@ -100,6 +103,7 @@
     misc = {
       force_default_wallpaper = 1; # Set to 0 or 1 to disable the anime mascot wallpapers
       disable_hyprland_logo = true; # If true disables the random hyprland logo / anime girl background. :(
+      allow_session_lock_restore = true;
     };
 
     # https://wiki.hyprland.org/Configuring/Variables/#input
@@ -132,6 +136,7 @@
       "$mainMod, return, exec, $terminal"
       "$mainMod, Q, killactive,"
       "$mainMod SHIFT, Q, exit,"
+      "$mainMod, F, fullscreen, 0 toggle"
       # "$mainMod, E, exec, $fileManager"
       # "$mainMod, V, togglefloating,"
       "$mainMod SHIFT, P, exec, hyprshot -m region"
