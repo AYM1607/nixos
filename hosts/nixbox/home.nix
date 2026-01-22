@@ -159,6 +159,14 @@ in {
           "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
         ];
       };
+      "tailscale-jmug" = {
+        user = "jmug";
+        hostname = "100.122.244.59";
+        identityFile = [
+          "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
+          "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
+        ];
+      };
     };
     # matchBlocks = {
     #   ws = {
