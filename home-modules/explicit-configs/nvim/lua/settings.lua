@@ -78,4 +78,18 @@ endfunction
 -- command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 -- ]])
 
+-- Soft line wrapping for markdown.
+local markdown_group = vim.api.nvim_create_augroup("MarkdownSpecific", { clear = true })
+vim.api.nvim_create_autocmd("FileType", {
+    pattern = { "markdown" }, -- Match markdown file patterns
+    group = markdown_group,
+    callback = function()
+        vim.opt_local.wrap = true
+        vim.opt_local.linebreak = true
+        vim.opt_local.textwidth = 0 -- Visual wrap to window edge
+        -- Optionally remap j/k for wrapped line navigation
+        vim.keymap.set('n', 'j', 'gj', { noremap = true, silent = true, buffer = true })
+        vim.keymap.set('n', 'k', 'gk', { noremap = true, silent = true, buffer = true })
+    end,
+})
 
