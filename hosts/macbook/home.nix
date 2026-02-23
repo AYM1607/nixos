@@ -89,6 +89,11 @@ in {
         hostname = "192.168.8.241";
         forwardAgent = true;
       };
+      handmade = {
+        user = "jmug";
+        hostname = "82.180.160.149";
+        forwardAgent = true;
+      };
     };
   };
 
