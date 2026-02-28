@@ -45,6 +45,7 @@ in {
     packages = with pkgs; [
       pkgs-unstable.cmake
       clang
+      sops
 
       nerd-fonts.bigblue-terminal
       nerd-fonts.fira-code
