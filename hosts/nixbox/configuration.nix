@@ -254,6 +254,9 @@ in
     };
   };
 
+  # Enable firewall and only allw some ports.
+  networking.firewall.enable = false;
+
   system.stateVersion = "25.11"; # Did you read the comment?
 }
 

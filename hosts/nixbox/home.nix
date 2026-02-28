@@ -3,6 +3,7 @@
   inputs,
   config,
   pkgs,
+  pkgs-unstable,
   ssh-agent-switcher,
   user,
   ...
@@ -41,6 +42,7 @@ in {
 
   # Custom options for my packages.
   nvim = {
+    package = pkgs-unstable.neovim;
     enable = true;
   };
   ghostty = {
@@ -79,6 +81,9 @@ in {
       prismlauncher
 
       # Misc
+      pkgs-unstable.opencode
+      pkgs-unstable.claude-code
+      pkgs-unstable.openssl
       # zig
       fastfetch
       fzf
