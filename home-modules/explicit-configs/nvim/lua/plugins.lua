@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
 
     -- Syntax
     use 'sheerun/vim-polyglot'
+    use 'https://codeberg.org/ziglang/zig.vim'
     -- use {
     ---    'prettier/vim-prettier',
     --     run = "yarn install",

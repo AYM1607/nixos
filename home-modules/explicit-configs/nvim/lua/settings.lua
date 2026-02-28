@@ -78,6 +78,16 @@ endfunction
 -- command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 -- ]])
 
+-- Use upstream zig plugin instead of polyglot.
+vim.g.polyglot_disabled = { "zig" }
+
+-- Prioritize Objective-C
+vim.filetype.add({
+  extension = {
+    m = 'objc',
+  },
+})
+
 -- Soft line wrapping for markdown.
 local markdown_group = vim.api.nvim_create_augroup("MarkdownSpecific", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
