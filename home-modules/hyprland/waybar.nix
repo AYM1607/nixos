@@ -242,6 +242,8 @@
         };
         "custom/lock" = {
           format = "<span color='#00FFFF'>   </span>";
+          # Figure out how to not crash hyprland whwn dispatching from waybar.
+          # on-click =  "hyprctl dispatch dpms off && hyprlock";
           on-click =  "hyprlock";
           tooltip = true;
           tooltip-format = "lock";
