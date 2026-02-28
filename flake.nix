@@ -140,7 +140,14 @@
           }
         ];
       };
-      nixbox = nixpkgs.lib.nixosSystem {
+      nixbox = let
+        pkgs-unstable_x86_64-linux = import nixpkgs-unstable {
+          system = "x86_64-linux";
+          config = {
+            allowUnfree = true;
+          };
+        };
+      in nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = {
           inherit inputs ghostty;
@@ -150,6 +157,7 @@
           home-manager.nixosModules.home-manager
           ({config, ...}: {
             home-manager.extraSpecialArgs = {
+              pkgs-unstable = pkgs-unstable_x86_64-linux;
               inherit inputs;
               inherit ssh-agent-switcher;
               inherit (config) user;
