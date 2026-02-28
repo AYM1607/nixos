@@ -1,33 +1,33 @@
 -- local capabilities = require('cmp_nvim_lsp').default_capabilities()
-vim.lsp.config('gopls', {
-  on_attach = function(client, bufnr)
-    require "lsp_signature".on_attach({
-        bind = true,
-        -- floating_window = true,
-        --hint_enable = true,
-        fix_pos = true,
-        use_lspsaga = true,
-        handler_opts = {
-          border = "rounded"   -- double, single, shadow, none
-        },
-      })
-  end,
-  cmd = {"gopls", "serve"},
-  settings = {
-    autostart = true,
-    gopls = {
-      analyses = {
-        unusedparams = true,
-      },
-      staticcheck = true,
-    },
-  },
-  autostart = true,
-  root_dir = require('lspconfig').util.root_pattern(".git","go.mod"),
-  init_options = {usePlaceholders = false, completeUnimported = true},
-  -- capabilities = capabilities,
-  single_file_support = true;
-})
+--vim.lsp.config('gopls', {
+--  on_attach = function(client, bufnr)
+--    require "lsp_signature".on_attach({
+--        bind = true,
+--        -- floating_window = true,
+--        --hint_enable = true,
+--        fix_pos = true,
+--        use_lspsaga = true,
+--        handler_opts = {
+--          border = "rounded"   -- double, single, shadow, none
+--        },
+--      })
+--  end,
+--  cmd = {"gopls", "serve"},
+--  settings = {
+--    autostart = true,
+--    gopls = {
+--      analyses = {
+--        unusedparams = true,
+--      },
+--      staticcheck = true,
+--    },
+--  },
+--  autostart = true,
+--  root_dir = require('lspconfig').util.root_pattern(".git","go.mod"),
+--  init_options = {usePlaceholders = false, completeUnimported = true},
+--  -- capabilities = capabilities,
+--  single_file_support = true;
+--})
 vim.lsp.enable('gopls')
 
 
