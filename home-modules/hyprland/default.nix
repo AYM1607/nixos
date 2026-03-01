@@ -145,10 +145,10 @@
       "$mainMod SHIFT, L, exec, hyprlock"
 
       # Move focus with mainMod + arrow keys
-      "$mainMod, M, movefocus, l"
-      "$mainMod, I, movefocus, r"
-      "$mainMod, N, movefocus, d"
-      "$mainMod, E, movefocus, u"
+      "$mainMod, h, movefocus, l"
+      "$mainMod, l, movefocus, r"
+      "$mainMod, j, movefocus, d"
+      "$mainMod, k, movefocus, u"
 
       # Switch workspaces with mainMod + [0-9]
       "$mainMod, 1, workspace, 1"
