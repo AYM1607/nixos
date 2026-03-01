@@ -230,12 +230,10 @@ in
   };
 
   # This is not really enabling X11, bad naming.
-  services.xserver = {
+  services.xserver.enable = true;
+  services.displayManager.gdm = {
     enable = true;
-    displayManager.gdm = {
-      enable = true;
-      wayland = true;
-    };
+    wayland = true;
   };
 
   # USB devices.
