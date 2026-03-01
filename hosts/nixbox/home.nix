@@ -146,7 +146,7 @@ in {
   services.ssh-agent.enable = true;
   programs.ssh = {
     enable = true;
-    addKeysToAgent = "confirm";
+    enableDefaultConfig = false;
     matchBlocks = {
       "git" = {
         host = "github.com";
@@ -155,6 +155,7 @@ in {
           "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
           "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
         ];
+        addKeysToAgent = "yes";
       };
       "forgejo" = {
         host = "code.jmug.me";
@@ -163,6 +164,7 @@ in {
           "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
           "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
         ];
+        addKeysToAgent = "yes";
       };
       "tailscale-jmug" = {
         user = "jmug";
@@ -171,17 +173,9 @@ in {
           "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
           "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
         ];
+        addKeysToAgent = "yes";
       };
     };
-    # matchBlocks = {
-    #   ws = {
-    #     user = "aym";
-    #     hostname = "73.118.150.68";
-    #     port = 69;
-    #     forwardAgent = true;
-    #     identityFile = "/home/jmug/.ssh/id_ed25519";
-    #   };
-    # };
   };
 
   # Let Home Manager install and manage itself.
