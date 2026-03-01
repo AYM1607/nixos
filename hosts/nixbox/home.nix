@@ -109,10 +109,10 @@ in {
   # home.activation.aws-cli-mfa-config = lib.hm.dag.entryAfter ["writeBoundary"] ''
   #   mkdir -p ~/.config/aws-cli-mfa
   #   cat > ~/.config/aws-cli-mfa/config.yaml << EOF
-# mfa_serial: $(cat ${config.sops.secrets."aws/jmug_matcha_mfa_serial".path})
-# role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
-# session_duration: 43200
-# EOF
+  # mfa_serial: $(cat ${config.sops.secrets."aws/jmug_matcha_mfa_serial".path})
+  # role_arn: $(cat ${config.sops.secrets."aws/role_arn".path})
+  # session_duration: 43200
+  # EOF
   # '';
 
   programs.zsh = {
