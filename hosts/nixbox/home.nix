@@ -117,12 +117,10 @@ in {
 
   programs.zsh = {
     shellAliases = {
-      # TODO BEGIN Interpolate the name of the host here.
-      # flakeconf = "sudo nvim /etc/nixos/flake.nix";
-      # nosconf = "sudo nvim /etc/nixos/hosts/devbox/configuration.nix";
-      # homeconf = "sudo nvim /etc/nixos/hosts/devbox/home.nix";
-      # nvconf = "sudo nvim /etc/nixos/home-modules/explicit-configs/nvim/init.lua";
-      # TODO END Interpolate the name of the host here.
+      flakeconf = "nvim ${homeDirectory}/nixos/flake.nix";
+      nosconf = "nvim ${homeDirectory}/nixos/hosts/nixbox/configuration.nix";
+      homeconf = "nvim ${homeDirectory}/nixos/hosts/nixbox/home.nix";
+      nvconf = "sudo nvim ${homeDirectory}/nixos/home-modules/explicit-configs/nvim/init.lua";
       rshellconf = "source ~/.zshrc";
       # TODO: Interpolate the name of the host here.
       nrsw = "sudo nixos-rebuild switch --flake ${homeDirectory}/nixos#nixbox";
