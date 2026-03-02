@@ -84,6 +84,7 @@ in {
       pkgs-unstable.opencode
       pkgs-unstable.claude-code
       pkgs-unstable.openssl
+      pkgs-unstable.dig
       # zig
       fastfetch
       fzf
