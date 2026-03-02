@@ -165,9 +165,19 @@ in {
         ];
         addKeysToAgent = "yes";
       };
-      "tailscale-jmug" = {
+      "homeserver" = {
         user = "jmug";
         hostname = "100.122.244.59";
+        identityFile = [
+          "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
+          "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
+        ];
+        forwardAgent = true;
+        addKeysToAgent = "yes";
+      };
+      "racknerd" = {
+        user = "jmug";
+        hostname = "155.94.155.137";
         identityFile = [
           "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
           "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
