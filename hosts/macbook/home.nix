@@ -84,16 +84,39 @@ in {
   };
 
   programs.ssh = {
+    enableDefaultConfig = false;
     matchBlocks = {
-      media = {
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+      };
+      homeserver = {
         user = "jmug";
-        hostname = "192.168.8.241";
+        hostname = "100.122.244.59";
+        forwardAgent = true;
+      };
+      devbox = {
+        user = "jmug";
+        hostname = "100.102.140.44";
         forwardAgent = true;
       };
       handmade = {
         user = "jmug";
         hostname = "82.180.160.149";
         forwardAgent = true;
+      };
+      "racknerd" = {
+        user = "jmug";
+        hostname = "155.94.155.137";
+        addKeysToAgent = "yes";
       };
     };
   };
