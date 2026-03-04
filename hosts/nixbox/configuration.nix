@@ -242,10 +242,8 @@ in
   services.udisks2.enable = true;
 
   # Enable the OpenSSH daemon.
-  # Enable the OpenSSH daemon.
   services.openssh = {
     enable = true;
-    # ports = [ 69 ];
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";

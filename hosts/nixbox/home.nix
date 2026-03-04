@@ -147,42 +147,44 @@ in {
     enable = true;
     enableDefaultConfig = false;
     matchBlocks = {
-      "git" = {
+      "*" = {
+        forwardAgent = false;
+        addKeysToAgent = "no";
+        compression = false;
+        serverAliveInterval = 0;
+        serverAliveCountMax = 3;
+        hashKnownHosts = false;
+        userKnownHostsFile = "~/.ssh/known_hosts";
+        controlMaster = "no";
+        controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPersist = "no";
+        identityFile = [
+          "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
+          "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
+        ];
+      };
+      git = {
         host = "github.com";
         user = "git";
-        identityFile = [
-          "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
-          "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
-        ];
         addKeysToAgent = "yes";
       };
-      "forgejo" = {
+      forgejo = {
         host = "code.jmug.me";
         user = "forgejo";
-        identityFile = [
-          "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
-          "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
-        ];
         addKeysToAgent = "yes";
       };
-      "homeserver" = {
+      homeserver = {
         user = "jmug";
         hostname = "100.122.244.59";
-        identityFile = [
-          "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
-          "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
-        ];
         forwardAgent = true;
-        addKeysToAgent = "yes";
       };
-      "racknerd" = {
+      racknerd = {
         user = "jmug";
         hostname = "155.94.155.137";
-        identityFile = [
-          "/home/jmug/.ssh/id_yubikey" # Auto updated symlik that matches all yubikeys.
-          "/home/jmug/.ssh/id_jmug" # Fallback key with passphrase.
-        ];
-        addKeysToAgent = "yes";
+      };
+      handmade = {
+        user = "jmug";
+        hostname = "82.180.160.149";
       };
     };
   };
