@@ -69,6 +69,7 @@
       "claude-code"
       "calibre"
       "rsyncui"
+      "trilium-notes"
     ];
   };
 
