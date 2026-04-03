@@ -65,7 +65,7 @@ return require('packer').startup(function(use)
     }
 
     use 'airblade/vim-rooter'
-    
+
     -- Find tools.
     use { "nvim-telescope/telescope-file-browser.nvim" }
     use {'nvim-telescope/telescope-ui-select.nvim' }
@@ -75,6 +75,7 @@ return require('packer').startup(function(use)
     }
     use { "junegunn/fzf" }
     use { "junegunn/fzf.vim" }
+    use { "MagicDuck/grug-far.nvim" }
 
 
     -- Diagnostics

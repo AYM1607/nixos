@@ -6,6 +6,7 @@ local handlers = lsp.handlers
 -- Space as leader.
 vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', {noremap = true, silent = true})
 vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Exit insert mode with ,h.
 vim.api.nvim_set_keymap('i', ',m', '<ESC>', {noremap = true, silent = true})
@@ -65,8 +66,9 @@ vim.api.nvim_set_keymap('n', '<Leader>bs', '<cmd>Telescope buffers<cr>',{})
 -- Code actions.
 vim.api.nvim_set_keymap('n', '<Leader>ca', "<Cmd>lua vim.lsp.buf.code_action()<CR>",{silent = true, noremap = true})
 vim.api.nvim_set_keymap('x', '<Leader>ca', "<Cmd>lua vim.lsp.buf.range_code_action()<CR>",{silent = true, noremap = true})
--- Flutter commands.
-vim.api.nvim_set_keymap('n', '<Leader>fl', "<cmd>lua require('telescope').extensions.flutter.commands()<cr>",{silent = true, noremap = true})
+-- Search and replace.
+vim.api.nvim_set_keymap('n', '<Leader>sr', ':GrugFar<cr>', {noremap = true, silent = true})
+vim.api.nvim_set_keymap('n', '<Leader>rsr', ':GrugFarWithin<cr>', {noremap = true, silent = true})
 
 
 -- Hover doc popup
