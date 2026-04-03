@@ -38,17 +38,19 @@
       no_quarantine = true;
     };
 
+    taps = [
+      "agavra/tap"
+    ];
     brews = [
-      "raylib"
       "watchman"
       "vite"
       "pipx"
       "codex"
       "python@3.11"
       "glow"
-      "act"
       "chromaprint"
       "libiconv"
+      "agavra/tap/tuicr"
     ];
     casks = [
       "ghostty"
@@ -68,7 +70,6 @@
       "discord"
       "claude-code"
       "calibre"
-      "rsyncui"
       "trilium-notes"
     ];
   };
